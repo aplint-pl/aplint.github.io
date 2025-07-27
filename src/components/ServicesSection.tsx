@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, Users, Settings } from "lucide-react";
+import { ArrowRight, Bot, Users, Settings } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
