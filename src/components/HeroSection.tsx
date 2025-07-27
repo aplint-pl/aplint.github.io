@@ -73,7 +73,7 @@ const HeroSection = () => {
           variant="hero" 
           size="xl" 
           className="animate-glow hover:animate-none"
-          onClick={() => document.getElementById('ofertas')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
         >
           Sprawdź naszą ofertę
         </Button>
