@@ -47,13 +47,31 @@ const TeamSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <CardHeader className="text-center relative z-10">
-                <div className="mx-auto mb-4 p-4 bg-gradient-primary rounded-full w-20 h-20 flex items-center justify-center group-hover:animate-glow">
-                  <member.icon className="w-10 h-10 text-primary-foreground" />
+                {/* Professional Photo Placeholder */}
+                <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-primary-glow/20 relative overflow-hidden group-hover:shadow-elegant transition-all duration-500">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="p-4 rounded-full bg-gradient-primary group-hover:animate-glow">
+                      <member.icon className="h-12 w-12 text-primary-foreground" />
+                    </div>
+                  </div>
+                  {/* Photo overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-50"></div>
+                  
+                  {/* Photo placeholder text */}
+                  <div className="absolute bottom-1 right-1 text-xs text-muted-foreground/60 bg-background/90 px-1 py-0.5 rounded text-center">
+                    Zdjęcie<br/>{member.name}
+                  </div>
                 </div>
+                
                 <CardTitle className="text-2xl text-foreground mb-2">{member.name}</CardTitle>
                 <Badge variant="secondary" className="mb-3 text-sm">
                   {member.specialty}
                 </Badge>
+                
+                {/* Specialization Icon Background */}
+                <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                  <member.icon className="h-16 w-16 text-primary" />
+                </div>
               </CardHeader>
               <CardContent className="relative z-10">
                 <CardDescription className="text-muted-foreground leading-relaxed mb-4">

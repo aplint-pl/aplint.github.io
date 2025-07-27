@@ -7,6 +7,45 @@ const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-glow/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}} />
+        
+        {/* AI Network Pattern */}
+        <div className="absolute top-10 right-10 opacity-20">
+          <svg width="200" height="200" viewBox="0 0 200 200" className="animate-glow">
+            <defs>
+              <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" />
+                <stop offset="100%" stopColor="hsl(var(--primary-glow))" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="4" fill="url(#networkGradient)" />
+            <circle cx="150" cy="50" r="4" fill="url(#networkGradient)" />
+            <circle cx="100" cy="100" r="4" fill="url(#networkGradient)" />
+            <circle cx="50" cy="150" r="4" fill="url(#networkGradient)" />
+            <circle cx="150" cy="150" r="4" fill="url(#networkGradient)" />
+            <line x1="50" y1="50" x2="150" y2="50" stroke="url(#networkGradient)" strokeWidth="1" />
+            <line x1="50" y1="50" x2="100" y2="100" stroke="url(#networkGradient)" strokeWidth="1" />
+            <line x1="150" y1="50" x2="100" y2="100" stroke="url(#networkGradient)" strokeWidth="1" />
+            <line x1="100" y1="100" x2="50" y2="150" stroke="url(#networkGradient)" strokeWidth="1" />
+            <line x1="100" y1="100" x2="150" y2="150" stroke="url(#networkGradient)" strokeWidth="1" />
+          </svg>
+        </div>
+
+        {/* Floating AI Icons */}
+        <div className="absolute top-1/3 left-10 opacity-30 animate-float" style={{animationDelay: '1s'}}>
+          <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary/20 to-primary-glow/20 flex items-center justify-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="hsl(var(--primary))">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div className="absolute bottom-1/3 right-20 opacity-30 animate-float" style={{animationDelay: '3s'}}>
+          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary-glow/20 to-primary/20 flex items-center justify-center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="hsl(var(--primary-glow))">
+              <path d="M9.5 2A7.5 7.5 0 0 0 2 9.5c0 5.74 7.5 11.5 7.5 11.5s7.5-5.76 7.5-11.5A7.5 7.5 0 0 0 9.5 2z"/>
+            </svg>
+          </div>
+        </div>
       </div>
       
       <div className="relative container mx-auto px-6 text-center">

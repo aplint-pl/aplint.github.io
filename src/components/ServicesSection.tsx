@@ -34,18 +34,59 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className="group hover:scale-105 transition-all duration-300 hover:shadow-elegant border-border bg-card/50 backdrop-blur-sm"
+              className="group hover:scale-105 transition-all duration-300 hover:shadow-elegant border-border bg-card/50 backdrop-blur-sm overflow-hidden"
             >
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-4 bg-gradient-primary rounded-full w-16 h-16 flex items-center justify-center group-hover:animate-glow">
-                  <service.icon className="w-8 h-8 text-primary-foreground" />
+              {/* Service Image Placeholder */}
+              <div className="w-full h-48 bg-gradient-to-br from-primary/10 to-primary-glow/10 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="p-4 rounded-full bg-gradient-primary group-hover:animate-glow">
+                    <service.icon className="h-12 w-12 text-primary-foreground" />
+                  </div>
                 </div>
+                {/* Decorative overlay */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary-glow/5 rounded-full blur-xl" />
+                
+                {/* Image placeholder text */}
+                <div className="absolute bottom-2 right-2 text-xs text-muted-foreground/50 bg-background/80 px-2 py-1 rounded">
+                  {index === 0 ? "Zdjęcie: Nowoczesne biuro tech" : 
+                   index === 1 ? "Zdjęcie: Spotkanie biznesowe" : 
+                   "Zdjęcie: Programiści przy pracy"}
+                </div>
+              </div>
+              
+              <CardHeader className="text-center">
                 <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-muted-foreground leading-relaxed">
+                <CardDescription className="text-muted-foreground leading-relaxed mb-4">
                   {service.description}
                 </CardDescription>
+                
+                {/* Process Schema Placeholder */}
+                <div className="p-3 rounded-lg bg-card/50 border border-border/50">
+                  <div className="text-xs text-muted-foreground/70 mb-2">Schemat procesu:</div>
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span className="flex items-center">
+                      <div className="w-2 h-2 rounded-full bg-primary mr-1"></div>
+                      Analiza
+                    </span>
+                    <div className="flex-1 mx-2 border-t border-primary/30 relative">
+                      <div className="absolute right-0 top-0 w-0 h-0 border-l-4 border-l-primary border-t-2 border-b-2 border-t-transparent border-b-transparent transform -translate-y-1/2"></div>
+                    </div>
+                    <span className="flex items-center">
+                      <div className="w-2 h-2 rounded-full bg-primary mr-1"></div>
+                      Wdrożenie
+                    </span>
+                    <div className="flex-1 mx-2 border-t border-primary/30 relative">
+                      <div className="absolute right-0 top-0 w-0 h-0 border-l-4 border-l-primary border-t-2 border-b-2 border-t-transparent border-b-transparent transform -translate-y-1/2"></div>
+                    </div>
+                    <span className="flex items-center">
+                      <div className="w-2 h-2 rounded-full bg-primary-glow mr-1"></div>
+                      Sukces
+                    </span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           ))}

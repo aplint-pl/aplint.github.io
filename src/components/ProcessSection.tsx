@@ -39,22 +39,63 @@ const ProcessSection = () => {
           <div className="w-24 h-1 bg-gradient-primary mx-auto"></div>
         </div>
 
+        {/* Process Timeline Visualization */}
+        <div className="mb-12">
+          <div className="bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg p-6 border border-primary/20">
+            <h3 className="text-xl font-bold text-center text-foreground mb-6">Nasz proces krok po kroku</h3>
+            <div className="flex items-center justify-between relative max-w-4xl mx-auto">
+              {steps.map((step, index) => (
+                <div key={index} className="flex flex-col items-center relative z-10">
+                  <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center mb-2 animate-glow">
+                    <step.icon className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div className="text-sm font-medium text-foreground text-center max-w-20">{step.title}</div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center text-xs font-bold text-primary">
+                    {step.number}
+                  </div>
+                </div>
+              ))}
+              {/* Connection line */}
+              <div className="absolute top-6 left-6 right-6 h-0.5 bg-gradient-primary opacity-30 -z-10"></div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {steps.map((step, index) => (
             <Card 
               key={index} 
               className="group relative overflow-hidden border-border bg-card/50 backdrop-blur-sm hover:shadow-elegant transition-all duration-500"
             >
+              {/* Step Illustration Placeholder */}
+              <div className="w-full h-32 bg-gradient-to-br from-primary/10 to-primary-glow/10 relative overflow-hidden mb-4">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="p-3 rounded-full bg-gradient-primary group-hover:animate-glow">
+                    <step.icon className="h-8 w-8 text-primary-foreground" />
+                  </div>
+                </div>
+                
+                {/* Step number overlay */}
+                <div className="absolute top-2 right-2 w-8 h-8 bg-primary/90 rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm">
+                  {step.number}
+                </div>
+                
+                {/* Illustration placeholder text */}
+                <div className="absolute bottom-2 left-2 text-xs text-muted-foreground/60 bg-background/90 px-2 py-1 rounded">
+                  {index === 0 ? "Wykres analizy potrzeb" : 
+                   index === 1 ? "Szkice rozwiązań" : 
+                   index === 2 ? "Dashboard wdrożenia" : 
+                   "Ikony wsparcia 24/7"}
+                </div>
+              </div>
+              
               {/* Step number background */}
-              <div className="absolute top-4 right-4 text-6xl font-bold text-primary/10 group-hover:text-primary/20 transition-colors duration-500">
+              <div className="absolute bottom-4 right-4 text-6xl font-bold text-primary/10 group-hover:text-primary/20 transition-colors duration-500">
                 {step.number}
               </div>
               
               <CardHeader className="relative z-10">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-gradient-primary rounded-lg group-hover:animate-glow">
-                    <step.icon className="w-6 h-6 text-primary-foreground" />
-                  </div>
                   <div className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
                     Krok {step.number}
                   </div>
@@ -62,9 +103,19 @@ const ProcessSection = () => {
                 <CardTitle className="text-xl text-foreground">{step.title}</CardTitle>
               </CardHeader>
               <CardContent className="relative z-10">
-                <CardDescription className="text-muted-foreground leading-relaxed">
+                <CardDescription className="text-muted-foreground leading-relaxed mb-4">
                   {step.description}
                 </CardDescription>
+                
+                {/* Process indicators */}
+                <div className="flex items-center justify-center space-x-2">
+                  {[...Array(4)].map((_, dotIndex) => (
+                    <div 
+                      key={dotIndex} 
+                      className={`w-2 h-2 rounded-full transition-colors duration-300 ${dotIndex <= index ? 'bg-primary' : 'bg-primary/20'}`}
+                    ></div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}
