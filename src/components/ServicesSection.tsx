@@ -94,16 +94,16 @@ const ServicesSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center">
+        <div className="text-center mt-6">
           <div className="bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg p-8 border border-primary/20">
             <h3 className="text-2xl font-bold text-foreground mb-4">
-              Chcesz zobaczyć więcej realizacji?
+              Zamów bezpłatną konsultację
             </h3>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              Skontaktuj się z nami, aby poznać pełne case studies i sprawdzić, jak możemy pomóc Twojemu biznesowi.
+              Skontaktuj się z nami i dowiedz się, jak możemy przyspieszyć Twoje procesy
             </p>
-            <Button variant="hero" size="lg" className="group">
-              Zobacz pełne portfolio
+            <Button variant="hero" size="lg" className="group" onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}>
+              Kontakt
               <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
