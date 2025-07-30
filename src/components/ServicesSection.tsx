@@ -1,21 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Bot, Users, Settings } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: Bot,
+      image: "/images/office.png",
       title: "Wdrażanie rozwiązań AI",
       description: "Nasz zespół ekspertów pomaga firmom w integracji zaawansowanych rozwiązań sztucznej inteligencji (SI, AI), które zwiększają efektywność operacyjną i wspierają rozwój biznesu. Od analizy potrzeb po pełne wdrożenie - jesteśmy z Tobą na każdym etapie."
     },
     {
-      icon: Users,
+      image: "/images/meeting.png",
       title: "Konsultacje i doradztwo",
       description: "Oferujemy profesjonalne doradztwo w zakresie strategii AI, pomagając firmom zrozumieć, jak najlepiej wykorzystać sztuczną inteligencję do osiągnięcia ich celów biznesowych. Nasze konsultacje obejmują ocenę gotowości technologicznej, identyfikację możliwości oraz planowanie wdrożeń."
     },
     {
-      icon: Settings,
+      image: "/images/work.png",
       title: "Dostosowywanie technologii",
       description: "Personalizacja rozwiązań dla specyficznych potrzeb klientów. Rozumiemy, że każda firma jest inna, dlatego dostosowujemy nasze technologie, aby idealnie pasowały do unikalnych wymagań i celów Twojego biznesu. Dzięki temu zapewniamy maksymalną wartość i skuteczność wdrożonych rozwiązań."
     }
@@ -37,23 +37,15 @@ const ServicesSection = () => {
               key={index} 
               className="group hover:scale-105 transition-all duration-300 hover:shadow-elegant border-border bg-card/50 backdrop-blur-sm overflow-hidden"
             >
-              {/* Service Image Placeholder */}
-              <div className="w-full h-48 bg-gradient-to-br from-primary/10 to-primary-glow/10 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="p-4 rounded-full bg-gradient-primary group-hover:animate-glow">
-                    <service.icon className="h-12 w-12 text-primary-foreground" />
-                  </div>
-                </div>
-                {/* Decorative overlay */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary-glow/5 rounded-full blur-xl" />
-                
-                {/* Image placeholder text */}
-                <div className="absolute bottom-2 right-2 text-xs text-muted-foreground/50 bg-background/80 px-2 py-1 rounded">
-                  {index === 0 ? "Zdjęcie: Nowoczesne biuro tech" : 
-                   index === 1 ? "Zdjęcie: Spotkanie biznesowe" : 
-                   "Zdjęcie: Programiści przy pracy"}
-                </div>
+              {/* Service Image */}
+              <div className="w-full h-48 relative overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Image overlay effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>
               
               <CardHeader className="text-center">

@@ -7,25 +7,29 @@ const ProcessSection = () => {
       icon: Search,
       number: "01",
       title: "Analiza potrzeb",
-      description: "Zaczynamy od dokładnego zrozumienia Twoich wyzwań i celów. Nasz zespół przeprowadza szczegółową analizę, aby zidentyfikować obszary, w których sztuczna inteligencja może przynieść największe korzyści."
+      description: "Zaczynamy od dokładnego zrozumienia Twoich wyzwań i celów. Nasz zespół przeprowadza szczegółową analizę, aby zidentyfikować obszary, w których sztuczna inteligencja może przynieść największe korzyści.",
+      image: "/images/chart.png"
     },
     {
       icon: PenTool,
       number: "02",
       title: "Projektowanie rozwiązań",
-      description: "Na podstawie zebranych informacji tworzymy spersonalizowaną strategię, która odpowiada na Twoje unikalne potrzeby. Nasze rozwiązania są projektowane z myślą o maksymalnej efektywności i dopasowaniu do specyfiki Twojego biznesu."
+      description: "Na podstawie zebranych informacji tworzymy spersonalizowaną strategię, która odpowiada na Twoje unikalne potrzeby. Nasze rozwiązania są projektowane z myślą o maksymalnej efektywności i dopasowaniu do specyfiki Twojego biznesu.",
+      image: "/images/draw.png"
     },
     {
       icon: Wrench,
       number: "03",
       title: "Wdrożenie i testowanie",
-      description: "Przechodzimy do implementacji i optymalizacji rozwiązań. Nasz zespół dba o to, aby proces wdrożenia przebiegał sprawnie, a wszystkie systemy działały zgodnie z oczekiwaniami. Testujemy i dostosowujemy technologie, aby zapewnić ich najwyższą wydajność."
+      description: "Przechodzimy do implementacji i optymalizacji rozwiązań. Nasz zespół dba o to, aby proces wdrożenia przebiegał sprawnie, a wszystkie systemy działały zgodnie z oczekiwaniami. Testujemy i dostosowujemy technologie, aby zapewnić ich najwyższą wydajność.",
+      image: "/images/dashboard.png"
     },
     {
       icon: HeartHandshake,
       number: "04",
       title: "Wsparcie i rozwój",
-      description: "Oferujemy ciągłe wsparcie i aktualizacje technologii, aby Twoje rozwiązania AI były zawsze na bieżąco z najnowszymi trendami i możliwościami. Jesteśmy z Tobą na każdym etapie rozwoju Twojego biznesu."
+      description: "Oferujemy ciągłe wsparcie i aktualizacje technologii, aby Twoje rozwiązania AI były zawsze na bieżąco z najnowszymi trendami i możliwościami. Jesteśmy z Tobą na każdym etapie rozwoju Twojego biznesu.",
+      image: "/images/clock.png"
     }
   ];
 
@@ -67,25 +71,24 @@ const ProcessSection = () => {
               key={index} 
               className="group relative overflow-hidden border-border bg-card/50 backdrop-blur-sm hover:shadow-elegant transition-all duration-500"
             >
-              {/* Step Illustration Placeholder */}
-              <div className="w-full h-32 bg-gradient-to-br from-primary/10 to-primary-glow/10 relative overflow-hidden mb-4">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="p-3 rounded-full bg-gradient-primary group-hover:animate-glow">
-                    <step.icon className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                </div>
+              {/* Step Image */}
+              <div className="w-full h-32 relative overflow-hidden mb-4">
+                <img 
+                  src={step.image} 
+                  alt={step.title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Image overlay effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
                 
                 {/* Step number overlay */}
                 <div className="absolute top-2 right-2 w-8 h-8 bg-primary/90 rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm">
                   {step.number}
                 </div>
                 
-                {/* Illustration placeholder text */}
-                <div className="absolute bottom-2 left-2 text-xs text-muted-foreground/60 bg-background/90 px-2 py-1 rounded">
-                  {index === 0 ? "Wykres analizy potrzeb" : 
-                   index === 1 ? "Szkice rozwiązań" : 
-                   index === 2 ? "Dashboard wdrożenia" : 
-                   "Ikony wsparcia 24/7"}
+                {/* Step icon overlay */}
+                <div className="absolute top-2 left-2 p-2 rounded-full bg-gradient-primary group-hover:animate-glow">
+                  <step.icon className="h-5 w-5 text-primary-foreground" />
                 </div>
               </div>
               

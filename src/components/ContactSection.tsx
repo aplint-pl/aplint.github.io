@@ -45,74 +45,9 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
-          <Card className="bg-card/70 backdrop-blur-sm border-border">
-            <CardHeader>
-              <CardTitle className="text-2xl text-foreground">Wyślij zapytanie</CardTitle>
-              <CardDescription>
-                Wypełnij formularz, a my skontaktujemy się z Tobą w ciągu 24 godzin.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Imię i nazwisko</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-background/50"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="bg-background/50"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="company">Nazwa firmy</Label>
-                  <Input
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="bg-background/50"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Wiadomość</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    required
-                    className="bg-background/50"
-                    placeholder="Opisz swoje potrzeby i jak możemy Ci pomóc..."
-                  />
-                </div>
-                <Button type="submit" variant="hero" className="w-full">
-                  Wyślij zapytanie
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
+        <div className="max-w-6xl mx-auto">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-8 max-w-2xl mx-auto w-full">
             <Card className="bg-card/70 backdrop-blur-sm border-border">
               <CardHeader>
                 <CardTitle className="text-2xl text-foreground">Dane kontaktowe</CardTitle>
