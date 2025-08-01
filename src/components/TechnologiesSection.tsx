@@ -82,11 +82,6 @@ const TechnologiesSection = () => {
                     ))}
                   </div>
                 </div>
-                
-                {/* Schema placeholder */}
-                <div className="absolute bottom-2 right-2 text-xs text-muted-foreground/60 bg-background/90 px-2 py-1 rounded">
-                  Schemat architektury
-                </div>
               </div>
 
               <CardHeader>
@@ -110,18 +105,6 @@ const TechnologiesSection = () => {
                       {tech}
                     </Badge>
                   ))}
-                </div>
-
-                {/* Logo placeholders row */}
-                <div className="mt-4 pt-3 border-t border-border/50">
-                  <div className="text-xs text-muted-foreground/70 mb-2">Loga technologii:</div>
-                  <div className="flex items-center justify-between">
-                    {[...Array(3)].map((_, logoIndex) => (
-                      <div key={logoIndex} className="w-8 h-8 rounded bg-muted/50 flex items-center justify-center">
-                        <div className="w-4 h-4 bg-primary/30 rounded"></div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </CardContent>
             </Card>
