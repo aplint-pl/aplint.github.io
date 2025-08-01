@@ -22,7 +22,7 @@ const TechnologiesSection = () => {
       title: "Bazy danych & Analytics",
       icon: Database,
       description: "Zarządzanie danymi i analityka dla projektów AI",
-      technologies: ["PostgreSQL", "MongoDB", "Redis", "Apache Spark", "Elasticsearch", "BigQuery"],
+      technologies: ["SQL Server", "PostgreSQL", "MongoDB", "Redis", "Qdrant", "Elasticsearch", "BigQuery"],
       color: "from-orange-500/20 to-red-500/20"
     },
     {
