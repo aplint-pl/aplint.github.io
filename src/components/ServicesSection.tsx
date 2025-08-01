@@ -5,17 +5,17 @@ import { ArrowRight } from "lucide-react";
 const ServicesSection = () => {
   const services = [
     {
-      image: "/images/office.png",
+      image: "/images/deployment.jpg",
       title: "Wdrażanie rozwiązań AI",
       description: "Nasz zespół ekspertów pomaga firmom w integracji zaawansowanych rozwiązań sztucznej inteligencji (SI, AI), które zwiększają efektywność operacyjną i wspierają rozwój biznesu. Od analizy potrzeb po pełne wdrożenie - jesteśmy z Tobą na każdym etapie."
     },
     {
-      image: "/images/meeting.png",
+      image: "/images/meeting.jpg",
       title: "Konsultacje i doradztwo",
       description: "Oferujemy profesjonalne doradztwo w zakresie strategii AI, pomagając firmom zrozumieć, jak najlepiej wykorzystać sztuczną inteligencję do osiągnięcia ich celów biznesowych. Nasze konsultacje obejmują ocenę gotowości technologicznej, identyfikację możliwości oraz planowanie wdrożeń."
     },
     {
-      image: "/images/work.png",
+      image: "/images/work.jpg",
       title: "Dostosowywanie technologii",
       description: "Personalizacja rozwiązań dla specyficznych potrzeb klientów. Rozumiemy, że każda firma jest inna, dlatego dostosowujemy nasze technologie, aby idealnie pasowały do unikalnych wymagań i celów Twojego biznesu. Dzięki temu zapewniamy maksymalną wartość i skuteczność wdrożonych rozwiązań."
     }

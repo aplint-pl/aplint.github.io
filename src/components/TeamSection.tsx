@@ -12,7 +12,7 @@ const TeamSection = () => {
     },
     {
       name: "Mateusz",
-      image: "/images/mateuszk.png",
+      image: "/images/mateuszk.jpg",
       specialty: "Ekspert AI - Strategie wdrożeniowe",
       description: "Specjalizujący się w strategiach wdrożeniowych. Jego umiejętność tworzenia efektywnych planów wdrożeniowych pozwala na płynne i skuteczne integracje AI w różnych sektorach biznesu.",
       skills: ["Strategie wdrożeniowe", "Planowanie", "Integracja AI"]

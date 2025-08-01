@@ -5,31 +5,31 @@ const ProcessSection = () => {
   const steps = [
     {
       icon: Search,
-      number: "01",
+      number: "1",
       title: "Analiza potrzeb",
       description: "Zaczynamy od dokładnego zrozumienia Twoich wyzwań i celów. Nasz zespół przeprowadza szczegółową analizę, aby zidentyfikować obszary, w których sztuczna inteligencja może przynieść największe korzyści.",
-      image: "/images/chart.png"
+      image: "/images/chart.jpg"
     },
     {
       icon: PenTool,
-      number: "02",
+      number: "2",
       title: "Projektowanie rozwiązań",
       description: "Na podstawie zebranych informacji tworzymy spersonalizowaną strategię, która odpowiada na Twoje unikalne potrzeby. Nasze rozwiązania są projektowane z myślą o maksymalnej efektywności i dopasowaniu do specyfiki Twojego biznesu.",
-      image: "/images/draw.png"
+      image: "/images/draw.jpg"
     },
     {
       icon: Wrench,
-      number: "03",
+      number: "3",
       title: "Wdrożenie i testowanie",
       description: "Przechodzimy do implementacji i optymalizacji rozwiązań. Nasz zespół dba o to, aby proces wdrożenia przebiegał sprawnie, a wszystkie systemy działały zgodnie z oczekiwaniami. Testujemy i dostosowujemy technologie, aby zapewnić ich najwyższą wydajność.",
-      image: "/images/dashboard.png"
+      image: "/images/dashboard.jpg"
     },
     {
       icon: HeartHandshake,
-      number: "04",
+      number: "4",
       title: "Wsparcie i rozwój",
       description: "Oferujemy ciągłe wsparcie i aktualizacje technologii, aby Twoje rozwiązania AI były zawsze na bieżąco z najnowszymi trendami i możliwościami. Jesteśmy z Tobą na każdym etapie rozwoju Twojego biznesu.",
-      image: "/images/clock.png"
+      image: "/images/clock.jpg"
     }
   ];
 
