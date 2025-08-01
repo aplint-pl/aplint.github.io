@@ -52,8 +52,8 @@ const HeroSection = () => {
         {/* Logo */}
         <div className="mb-8 flex justify-center">
           <img 
-            src="/lovable-uploads/e38032ee-0198-4ff7-919a-c0a6a9c55fba.png" 
-            alt="APLINT Logo" 
+            src="/images/aplint-logo-inv.png" 
+            alt="APLINT" 
             className="h-24 md:h-32 animate-glow"
           />
         </div>

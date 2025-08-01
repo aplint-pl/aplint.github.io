@@ -104,8 +104,8 @@ const ContactSection = () => {
             <Card className="bg-gradient-to-br from-foreground/5 to-primary/5 border-border">
               <CardContent className="p-8 text-center">
                 <img 
-                  src="/lovable-uploads/4565612b-9d6f-4066-8188-115e66c41c0c.png" 
-                  alt="APLINT Logo" 
+                  src="/images/aplint-logo.png" 
+                  alt="APLINT" 
                   className="h-16 mx-auto opacity-80 hover:opacity-100 transition-opacity"
                 />
               </CardContent>
