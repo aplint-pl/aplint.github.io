@@ -99,8 +99,8 @@ const ContactSection = () => {
                     <br />KRS 0000845044
                     <br />NIP 8842802170
                     <br />REGON 386247610
-                    <br />Kapitał zakładowy 5 tys. zł
-                    <br />Data rejestracji 8 czerwca 2020 r.
+                    <br />Kapitał zakładowy 5 tys. zł
+                    <br />Data rejestracji 8 czerwca 2020 r.
                     <br />ul. Marsz. Józefa Piłsudskiego 74/320, 50-020 Wrocław
                     </p>
                   </div>
