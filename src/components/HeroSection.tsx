@@ -1,16 +1,28 @@
 import { Button } from "@/components/ui/button";
+import ConsultationModal from "@/components/ConsultationModal";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-bg overflow-hidden">
+    <section className="relative scroll-mt-14 min-h-[calc(85svh-3.5rem)] flex items-center justify-center bg-gradient-bg overflow-visible">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-glow/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}} />
-        
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle branded mesh + grid */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background" />
+        <div
+          className="absolute inset-0 opacity-10 [background-image:linear-gradient(to_right,hsl(var(--primary))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary))_1px,transparent_1px)] [background-size:48px_48px]"
+        />
+
+        {/* Brand orbs */}
+        <div className="absolute -top-10 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
+        <div
+          className="absolute bottom-0 right-1/4 w-[34rem] h-[34rem] bg-primary-glow/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "2s" }}
+        />
+
         {/* AI Network Pattern */}
-        <div className="absolute top-10 right-10 opacity-20">
-          <svg width="200" height="200" viewBox="0 0 200 200" className="animate-glow">
+        <div className="absolute top-6 right-6 opacity-15">
+          <svg width="220" height="220" viewBox="0 0 200 200" className="animate-glow">
             <defs>
               <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="hsl(var(--primary))" />
@@ -29,54 +41,57 @@ const HeroSection = () => {
             <line x1="100" y1="100" x2="150" y2="150" stroke="url(#networkGradient)" strokeWidth="1" />
           </svg>
         </div>
-
-        {/* Floating AI Icons */}
-        <div className="absolute top-1/3 left-10 opacity-30 animate-float" style={{animationDelay: '1s'}}>
-          <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary/20 to-primary-glow/20 flex items-center justify-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="hsl(var(--primary))">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-        </div>
-
-        <div className="absolute bottom-1/3 right-20 opacity-30 animate-float" style={{animationDelay: '3s'}}>
-          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary-glow/20 to-primary/20 flex items-center justify-center">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="hsl(var(--primary-glow))">
-              <path d="M9.5 2A7.5 7.5 0 0 0 2 9.5c0 5.74 7.5 11.5 7.5 11.5s7.5-5.76 7.5-11.5A7.5 7.5 0 0 0 9.5 2z"/>
-            </svg>
-          </div>
-        </div>
       </div>
       
       <div className="relative container mx-auto px-6 text-center">
         {/* Logo */}
         <div className="mb-8 flex justify-center">
-          <img 
-            src="/images/aplint-logo-inv.png" 
-            alt="APLINT" 
-            className="h-24 md:h-32 animate-glow"
+          <img
+            src="/images/aplint-logo.svg"
+            alt="APLiNT"
+            className="h-24 md:h-32 dark:hidden"
+          />
+          <img
+            src="/images/aplint-logo-inv.svg"
+            alt="APLiNT"
+            className="hidden h-24 md:h-32 dark:block"
           />
         </div>
 
         {/* Main heading */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-          Wykorzystaj moc AI,<br />zwiększ swoje możliwości
+        <h1 className="text-4xl md:text-6xl lg:text-7x1 font-bold mb-6 text-balance">
+          Wdrażamy AI w Twoim biznesie
         </h1>
 
         {/* Subheading */}
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-          Wdrażamy AI dla Twojego Biznesu
+        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
+          Automatyzujemy procesy w działach produkcji, finansów i logistyki.
+          Szybkie wdrożenie. Integracja z Twoimi systemami.
+          <br />
+          Dane zostają u Ciebie.
         </p>
 
-        {/* CTA Button */}
-        <Button 
-          variant="hero" 
-          size="xl" 
-          className="animate-glow hover:animate-none"
-          onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Sprawdź naszą ofertę
-        </Button>
+        {/* CTA buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <ConsultationModal
+            trigger={
+              <Button
+                variant="hero"
+                size="xl"
+                className="hover:animate-none"
+              >
+                Bezpłatna konsultacja
+              </Button>
+            }
+          />
+          <Button variant="outline" size="xl" asChild>
+            <Link to="/#oferta">Nasza oferta</Link>
+          </Button>
+        </div>
+
+        <p className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto mt-4 text-balance">
+          Porozmawiajmy o Twoich pomysłach - bez zobowiązań
+        </p>
 
       </div>
     </section>

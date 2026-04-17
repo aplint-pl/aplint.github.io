@@ -11,14 +11,14 @@ const distDir = path.join(__dirname, "dist");
 const indexPath = path.join(distDir, "index.html");
 const serverEntryPath = path.resolve(distDir, "server", "entry-server.js");
 
-const ROUTES_TO_PRERENDER = ["/"];
+const PRERENDER_ROUTES = ["/", "/polityka-prywatnosci", "/faq"];
 
 async function main() {
   let template = fs.readFileSync(indexPath, "utf-8");
 
   const { render } = await import(pathToFileURL(serverEntryPath).href);
 
-  for (const route of ROUTES_TO_PRERENDER) {
+  for (const route of PRERENDER_ROUTES) {
     const appHtml = render(route);
     const html = template.replace("<!--ssr-outlet-->", appHtml);
     const outPath = route === "/" ? indexPath : path.join(distDir, route, "index.html");
@@ -28,7 +28,7 @@ async function main() {
     fs.writeFileSync(outPath, html, "utf-8");
   }
 
-  console.log("Pre-render zakończony:", ROUTES_TO_PRERENDER.join(", "));
+  console.log("Pre-render zakończony:", PRERENDER_ROUTES.join(", "));
 }
 
 main().catch((err) => {

@@ -1,46 +1,19 @@
-import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 const ContactSection = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: ""
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Dziękujemy za kontakt!",
-      description: "Otrzymaliśmy Twoją wiadomość i skontaktujemy się z Tobą wkrótce.",
-    });
-    setFormData({ name: "", email: "", company: "", message: "" });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-background to-muted/20" id="kontakt">
+    <section
+      className="scroll-mt-14 py-20 px-6 bg-gradient-to-b from-background to-muted/20"
+      id="kontakt"
+    >
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
             Kontakt
           </h2>
           <div className="w-24 h-1 bg-gradient-primary mx-auto mb-6"></div>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
             Skontaktuj się z nami i dowiedz się, jak możemy przyspieszyć Twoje procesy
           </p>
         </div>
@@ -75,13 +48,22 @@ const ContactSection = () => {
                   <div>
                     <p className="font-semibold text-foreground">Telefon</p>
                     <div className="space-y-1">
-                      <a href="tel:+48725116342" className="block text-primary hover:text-primary-glow transition-colors">
+                      <a
+                        href="tel:+48725116342"
+                        className="block text-primary hover:text-primary-glow transition-colors"
+                      >
                         +48 725 116 342
                       </a>
-                      <a href="tel:+48883572813" className="block text-primary hover:text-primary-glow transition-colors">
+                      <a
+                        href="tel:+48883572813"
+                        className="block text-primary hover:text-primary-glow transition-colors"
+                      >
                         +48 883 572 813
                       </a>
-                      <a href="tel:+48519500510" className="block text-primary hover:text-primary-glow transition-colors">
+                      <a
+                        href="tel:+48519500510"
+                        className="block text-primary hover:text-primary-glow transition-colors"
+                      >
                         +48 519 500 510
                       </a>
                     </div>
@@ -95,29 +77,19 @@ const ContactSection = () => {
                   <div>
                     <p className="font-semibold text-foreground">Dane spółki</p>
                     <p className="text-muted-foreground">
-                    Aplint Sp. z o.o.
-                    <br />KRS 0000845044
-                    <br />NIP 8842802170
-                    <br />REGON 386247610
-                    <br />Kapitał zakładowy 5 tys. zł
-                    <br />Data rejestracji 8 czerwca 2020 r.
-                    <br />ul. Marsz. Józefa Piłsudskiego 74/320, 50-020 Wrocław
+                      Aplint Sp. z o.o.
+                      <br />KRS 0000845044
+                      <br />NIP 8842802170
+                      <br />REGON 386247610
+                      <br />Kapitał zakładowy: 5 000 zł
+                      <br />ul. Marsz. Józefa Piłsudskiego 74/320
+                      <br />50-020 Wrocław
                     </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Company logo on light background */}
-            <Card className="bg-gradient-to-br from-foreground/5 to-primary/5 border-border">
-              <CardContent className="p-8 text-center">
-                <img 
-                  src="/images/aplint-logo.png" 
-                  alt="APLINT" 
-                  className="h-16 mx-auto opacity-80 hover:opacity-100 transition-opacity"
-                />
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

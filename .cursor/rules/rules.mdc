@@ -1,6 +1,14 @@
 ---
-description: 
-globs: 
+description: >
+  Use when creating or editing GitHub Actions workflows or composite actions:
+  Node setup (npm ci, package.json / .nvmrc / .env.example checks), job-level
+  env and secrets, branch naming (main vs master), composite action structure,
+  and verifying third-party action versions and deprecation via GitHub API.
+globs:
+  - ".github/workflows/**/*.yml"
+  - ".github/workflows/**/*.yaml"
+  - ".github/actions/**/*.yml"
+  - ".github/actions/**/*.yaml"
 alwaysApply: false
 ---
 

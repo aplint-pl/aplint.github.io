@@ -1,106 +1,107 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Check, FileText, Settings, Target } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
     {
-      image: "/images/deployment.jpg",
-      title: "Wdrażanie rozwiązań AI",
-      description: "Nasz zespół ekspertów pomaga firmom w integracji zaawansowanych rozwiązań sztucznej inteligencji (SI, AI), które zwiększają efektywność operacyjną i wspierają rozwój biznesu. Od analizy potrzeb po pełne wdrożenie - jesteśmy z Tobą na każdym etapie."
+      icon: Settings,
+      title: "Automatyzacja procesów",
+      description:
+        "Identyfikujemy powtarzalne zadania, które pochłaniają czas Twojego zespołu, i automatyzujemy je za pomocą AI. Faktury, wnioski, raporty, korespondencja - to wszystko może dziać się samo.",
+      effects: [
+        "Redukcja czasu na rutynowe zadania nawet o 90%",
+        "Eliminacja błędów ludzkich",
+        "Pracownicy skupiają się na tym, co ważne",
+      ],
     },
     {
-      image: "/images/meeting.jpg",
-      title: "Konsultacje i doradztwo",
-      description: "Oferujemy profesjonalne doradztwo w zakresie strategii AI, pomagając firmom zrozumieć, jak najlepiej wykorzystać sztuczną inteligencję do osiągnięcia ich celów biznesowych. Nasze konsultacje obejmują ocenę gotowości technologicznej, identyfikację możliwości oraz planowanie wdrożeń."
+      icon: Target,
+      title: "Wspomaganie decyzji",
+      description:
+        "AI analizuje dane z Twoich systemów i dostarcza rekomendacje w czasie rzeczywistym. Zamiast zgadywać lub tracić godziny na analizę Exceli - dostajesz konkretne odpowiedzi.",
+      effects: [
+        "Szybsze podejmowanie decyzji",
+        "Decyzje oparte na danych, nie intuicji",
+        "Wczesne wykrywanie problemów i szans",
+      ],
     },
     {
-      image: "/images/work.jpg",
-      title: "Dostosowywanie technologii",
-      description: "Personalizacja rozwiązań dla specyficznych potrzeb klientów. Rozumiemy, że każda firma jest inna, dlatego dostosowujemy nasze technologie, aby idealnie pasowały do unikalnych wymagań i celów Twojego biznesu. Dzięki temu zapewniamy maksymalną wartość i skuteczność wdrożonych rozwiązań."
+      icon: FileText,
+      title: "Analiza treści i dokumentów",
+      description:
+        "Maile, zapytania ofertowe, umowy, specyfikacje - AI czyta, kategoryzuje i wyciąga kluczowe informacje. Twój zespół dostaje gotowe podsumowania zamiast stosów dokumentów.",
+      effects: [
+        "Automatyczna kategoryzacja korespondencji",
+        "Wyciąganie kluczowych danych z dokumentów",
+        "Szybsza reakcja na zapytania klientów",
+      ],
     }
   ];
 
   return (
-    <section id="oferta" className="py-20 px-6">
+    <section id="oferta" className="scroll-mt-14 py-20 px-6">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Oferta i usługi
+            Co robimy
           </h2>
-          <div className="w-24 h-1 bg-gradient-primary mx-auto"></div>
+          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto text-balance">
+            Trzy obszary, w których AI przynosi wymierne korzyści
+          </p>
+          <div className="w-24 h-1 bg-gradient-primary mx-auto" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="group hover:scale-105 transition-all duration-300 hover:shadow-elegant border-border bg-card/50 backdrop-blur-sm overflow-hidden"
+            <Card
+              key={index}
+              className="group transition-all duration-300 hover:shadow-elegant border-border bg-card/50 backdrop-blur-sm overflow-hidden"
             >
-              {/* Service Image */}
-              <div className="w-full h-48 relative overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover"
-                />
-                {/* Image overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-              </div>
-              
               <CardHeader className="text-center">
-                <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
+                <div className="mx-auto w-14 h-14 rounded-2xl bg-gradient-primary/10 flex items-center justify-center mb-4">
+                  <service.icon
+                    className="h-7 w-7 text-primary"
+                    aria-hidden="true"
+                  />
+                </div>
+                <CardTitle className="text-xl text-foreground">
+                  {service.title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-muted-foreground leading-relaxed mb-4">
                   {service.description}
                 </CardDescription>
-                
-                {/* Process Schema Placeholder */}
-                <div className="p-3 rounded-lg bg-card/50 border border-border/50">
-                  <div className="text-xs text-muted-foreground/70 mb-2">Schemat procesu:</div>
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-primary mr-1"></div>
-                      Analiza
-                    </span>
-                    <div className="flex-1 mx-2 border-t border-primary/30 relative">
-                      <div className="absolute right-0 top-0 w-0 h-0 border-l-4 border-l-primary border-t-2 border-b-2 border-t-transparent border-b-transparent transform -translate-y-1/2"></div>
-                    </div>
-                    <span className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-primary mr-1"></div>
-                      Wdrożenie
-                    </span>
-                    <div className="flex-1 mx-2 border-t border-primary/30 relative">
-                      <div className="absolute right-0 top-0 w-0 h-0 border-l-4 border-l-primary border-t-2 border-b-2 border-t-transparent border-b-transparent transform -translate-y-1/2"></div>
-                    </div>
-                    <span className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-primary-glow mr-1"></div>
-                      Sukces
-                    </span>
+
+                <div className="space-y-2">
+                  <div className="text-xs font-semibold text-muted-foreground/70 uppercase tracking-wide">
+                    Efekty
                   </div>
+                  <ul className="space-y-2">
+                    {service.effects.map((effect) => (
+                      <li
+                        key={effect}
+                        className="flex items-start gap-2 text-sm text-muted-foreground"
+                      >
+                        <Check
+                          className="mt-0.5 h-5 w-5 text-primary"
+                          aria-hidden="true"
+                        />
+                        <span className="leading-relaxed">{effect}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <div className="text-center mt-6">
-          <div className="bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg p-8 border border-primary/20">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Zamów bezpłatną konsultację
-            </h3>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              Skontaktuj się z nami i dowiedz się, jak możemy przyspieszyć Twoje procesy
-            </p>
-            <Button variant="hero" size="lg" className="group" onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}>
-              Kontakt
-              <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        </div>
-
       </div>
     </section>
   );

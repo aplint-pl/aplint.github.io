@@ -7,40 +7,49 @@ const TeamSection = () => {
       name: "Kamil",
       image: "/images/kamilk.jpg",
       specialty: "Ekspert AI - Branża produkcyjna",
-      description: "Specjalizujący się w branży produkcyjnej. Dzięki swojemu doświadczeniu pomaga firmom w optymalizacji procesów produkcyjnych za pomocą nowoczesnych technologii.",
+      description:
+        "Specjalizuje się w optymalizacji procesów produkcyjnych. Pomaga firmom wykorzystać dane z maszyn i systemów do podejmowania lepszych decyzji operacyjnych.",
       skills: ["Produkcja", "Optymalizacja procesów", "Automatyzacja"]
     },
     {
       name: "Mateusz",
       image: "/images/mateuszk.jpg",
       specialty: "Ekspert AI - Strategie wdrożeniowe",
-      description: "Specjalizujący się w strategiach wdrożeniowych. Jego umiejętność tworzenia efektywnych planów wdrożeniowych pozwala na płynne i skuteczne integracje AI w różnych sektorach biznesu.",
+      description:
+        "Projektuje strategie wdrożeń AI dopasowane do realiów firmy. Dba o to, żeby każdy projekt miał jasny cel biznesowy i mierzalne efekty.",
       skills: ["Strategie wdrożeniowe", "Planowanie", "Integracja AI"]
     },
     {
       name: "Kamil",
       image: "/images/kamilp.jpg",
-      specialty: "Ekspert AI - Innowacje",
-      description: "Odpowiedzialny za innowacje. Skupia się na poszukiwaniu i implementacji najnowszych rozwiązań technologicznych, które mogą przynieść realne korzyści dla klientów.",
+      specialty: "Ekspert AI - Innowacje i R&D",
+      description:
+        "Śledzi najnowsze trendy w AI i dobiera technologie, które przynoszą realne korzyści. Testuje rozwiązania, zanim trafią do klientów.",
       skills: ["Innowacje", "R&D", "Nowe technologie"]
     }
   ];
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-background to-muted/20">
+    <section
+      id="zespol"
+      className="scroll-mt-14 py-20 px-6 bg-gradient-to-b from-background to-muted/20"
+    >
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
             Nasz zespół
           </h2>
-          <div className="w-24 h-1 bg-gradient-primary mx-auto"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Trzech ekspertów, którzy przeprowadzą Cię przez wdrożenie
+          </p>
+          <div className="w-24 h-1 bg-gradient-primary mx-auto mt-6"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           {team.map((member, index) => (
             <Card 
               key={index} 
-              className="group hover:scale-105 transition-all duration-500 hover:shadow-elegant border-border bg-card/70 backdrop-blur-sm relative overflow-hidden"
+              className="group max-w-md mx-auto transition-all duration-500 hover:shadow-elegant border-border bg-card/70 backdrop-blur-sm relative overflow-hidden"
             >
               {/* Background pattern */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

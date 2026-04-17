@@ -21,7 +21,19 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",
-        { allowConstantExport: true },
+        {
+          allowConstantExport: true,
+          // shadcn/ui: CVA variant helpers, hooks, and re-exports live next to components.
+          allowExportNames: [
+            "badgeVariants",
+            "buttonVariants",
+            "navigationMenuTriggerStyle",
+            "toggleVariants",
+            "useFormField",
+            "useSidebar",
+            "toast",
+          ],
+        },
       ],
       "@typescript-eslint/no-unused-vars": "off",
     },
