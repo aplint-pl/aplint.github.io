@@ -1,0 +1,24 @@
+# APLiNT
+
+> Wdrażanie sztucznej inteligencji i automatyzacji procesów w firmach produkcyjnych - integracja z istniejącymi systemami (ERP itd.), szybkie pilotaże, możliwość wdrożeń lokalnych/on-prem.
+
+Język witryny: polski. Kanoniczny adres: https://aplint.pl
+
+## Główne
+
+- [Strona główna](https://aplint.pl/): Oferta AI dla produkcji, finansów i logistyki; proces współpracy; technologie; case study / realizacje; zespół; kontakt; możliwość umówienia bezpłatnej konsultacji.
+- [FAQ](https://aplint.pl/faq): Odpowiedzi m.in. o kosztach i czasie wdrożenia, integracji z ERP/CRM bez wymiany systemów, bezpieczeństwie danych (w tym on-prem), potrzebie własnego IT, pilotażu i ryzyku, dopasowaniu AI do firmy.
+
+## Strona główna - kotwice (nawigacja)
+
+- [Dla kogo](https://aplint.pl/#dla-kogo): Dla jakich organizacji i scenariuszy.
+- [Oferta](https://aplint.pl/#oferta): Zakres usług i obszary wsparcia.
+- [Jak działamy](https://aplint.pl/#jak-dzialamy): Opis procesu współpracy.
+- [Technologie](https://aplint.pl/#technologie): Stack i podejście techniczne.
+- [Case study](https://aplint.pl/#case-study): Przykłady / portfolio.
+- [Zespół](https://aplint.pl/#zespol): Ludzie przy projektach.
+- [Kontakt](https://aplint.pl/#kontakt): Dane kontaktowe i formularz.
+
+## Optional
+
+- [Polityka prywatności](https://aplint.pl/polityka-prywatnosci): Treść prawna RODO / cookies / przetwarzanie danych; do pominięcia przy krótkich odpowiedziach o produkcie.
