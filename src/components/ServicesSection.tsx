@@ -49,11 +49,8 @@ const ServicesSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Co robimy
-          </h2>
-          <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto text-balance">
             Trzy obszary, w których AI przynosi wymierne korzyści
-          </p>
+          </h2>
           <div className="w-24 h-1 bg-gradient-primary mx-auto" />
         </div>
 

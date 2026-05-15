@@ -70,7 +70,7 @@ export default function HighlightsSection() {
 
               <CardHeader className="relative z-10">
                 <div className="flex items-center justify-center mb-4">
-                  <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
+                  <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 font-semibold text-primary">
                     {h.label}
                   </span>
                 </div>

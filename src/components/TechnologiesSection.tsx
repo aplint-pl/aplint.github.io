@@ -1,10 +1,26 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ShieldCheck } from "lucide-react";
+const privacyPoints = [
+  {
+    title: "Pełna zgodność z RODO",
+    description: "Od projektowania po wdrożenie i utrzymanie.",
+  },
+  {
+    title: "Wdrożenie on-premise",
+    description: "AI może działać lokalnie, na serwerach klienta.",
+  },
+  {
+    title: "Opcja zero transferu danych",
+    description:
+      "Informacje nie muszą opuszczać infrastruktury firmy, jeśli jest to wymagane.",
+  },
+  {
+    title: "Pełna kontrola",
+    description: "Zachowujesz 100% własności i nadzoru nad danymi.",
+  },
+  {
+    title: "Audytowalność",
+    description: "Przejrzyste procesy gotowe na kontrole i certyfikacje.",
+  },
+];
 
 type TechnologyItem = {
   name: string;
@@ -41,8 +57,8 @@ const TechnologiesSection = () => {
   ];
 
   return (
-    <section id="technologie" className="scroll-mt-14 py-20">
-      <div className="container mx-auto">
+    <section id="technologie" className="scroll-mt-14">
+      <div className="container mx-auto py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
             Technologie, które stosujemy
@@ -53,7 +69,7 @@ const TechnologiesSection = () => {
           <div className="w-24 h-1 bg-gradient-primary mx-auto" />
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-3 mb-12">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-3">
           {technologies.map((tech) => (
             <div
               key={tech.name}
@@ -91,44 +107,37 @@ const TechnologiesSection = () => {
             </div>
           ))}
         </div>
+      </div>
 
-        <div className="bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg p-8 border border-primary/20 backdrop-blur-sm">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            <ShieldCheck
-              className="inline-block mr-2 h-7 w-7 text-primary align-[-2px]"
-              aria-hidden="true"
-            />
-            Prywatność i zgodność
-          </h3>
-          <div className="text-muted-foreground text-lg leading-relaxed">
-            <p className="mb-3 text-balance">
-              Prywatność i zgodność regulacyjna są wbudowane w każde nasze
-              rozwiązanie.{" "}
-              <strong>
-                Dostosowujemy model wdrożenia do wymagań klienta
-              </strong>{" "}
-              - od rozwiązań chmurowych po całkowicie lokalne instalacje:
-            </p>
-            <ul className="space-y-2 list-none">
-              <li>
-                <strong>Pełna zgodność z RODO</strong> - od projektowania po
-                wdrożenie i utrzymanie
-              </li>
-              <li>
-                <strong>Możliwość wdrożenia on-premise</strong> - AI może działać
-                lokalnie, na serwerach klienta
-              </li>
-              <li>
-                <strong>Opcja zero transferu danych</strong> - informacje nie
-                muszą opuszczać infrastruktury firmy, jeśli jest to wymagane
-              </li>
-              <li>
-                <strong>Pełna kontrola</strong> - zachowujesz 100% własności i nadzoru nad danymi
-              </li>
-              <li>
-                <strong>Audytowalność</strong> - przejrzyste procesy gotowe na
-                kontrole i certyfikacje
-              </li>
+      <div className="bg-card border-y border-border/40 py-20">
+        <div className="container mx-auto">
+          <div className="grid gap-12 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-12 lg:gap-20 items-start">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-balance">
+                Prywatność i zgodność
+              </h3>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-4 text-balance">
+                Prywatność i zgodność regulacyjna są wbudowane w każde nasze
+                rozwiązanie.
+              </p>
+              <p className="text-lg md:text-xl font-semibold text-foreground leading-relaxed text-balance">
+                Dostosowujemy model wdrożenia do wymagań klienta — od chmury po
+                całkowicie lokalne instalacje.
+              </p>
+            </div>
+
+            <ul
+              role="list"
+              className="border-y border-foreground/10 divide-y divide-foreground/10"
+            >
+              {privacyPoints.map((point) => (
+                <li key={point.title} className="py-5 first:pt-6 last:pb-6">
+                  <p className="font-semibold text-foreground">{point.title}</p>
+                  <p className="mt-1 text-muted-foreground leading-relaxed">
+                    {point.description}
+                  </p>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

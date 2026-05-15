@@ -57,31 +57,31 @@ const ProcessSection = () => {
           <div className="w-24 h-1 bg-gradient-primary mx-auto" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {steps.map((step) => (
             <Card
               key={step.number}
-              className="group relative overflow-hidden border-border bg-card/70 backdrop-blur-sm hover:shadow-elegant transition-all duration-500"
+              className="group relative flex h-full flex-col overflow-hidden border-border bg-card/70 backdrop-blur-sm hover:shadow-elegant transition-all duration-500"
             >
-              <div className="absolute top-4 right-4 text-5xl md:text-6xl font-bold text-primary/25">
+              <div className="absolute top-4 right-4 text-4xl lg:text-5xl font-bold text-primary/25">
                 {step.number}
               </div>
 
-              <CardHeader className="relative z-10">
-                <CardTitle className="text-xl text-foreground">
+              <CardHeader className="relative z-10 pb-2">
+                <CardTitle className="text-lg text-foreground pr-10">
                   {step.title}
                 </CardTitle>
-                <div className="text-sm text-muted-foreground mb-4">
+                <div className="text-sm text-muted-foreground">
                   {step.time}
                 </div>
               </CardHeader>
 
-              <CardContent className="relative z-10">
-                <CardDescription className="text-muted-foreground leading-relaxed mb-4">
+              <CardContent className="relative z-10 flex flex-1 flex-col pt-0">
+                <CardDescription className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                   {step.description}
                 </CardDescription>
 
-                <div className="space-y-2">
+                <div className="mt-auto space-y-2">
                   <div className="text-xs font-semibold text-muted-foreground/70 uppercase tracking-wide">
                     Co dostarczamy
                   </div>
