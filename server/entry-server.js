@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 import { cva } from "class-variance-authority";
-import { BarChart3, Bolt, Check, ChevronDown, ChevronRight, Circle, Factory, FileText, Link2, Mail, MapPin, Menu, Moon, Package, Phone, Settings, ShieldCheck, Sun, Target, X } from "lucide-react";
+import { Bolt, Check, ChevronDown, ChevronRight, Circle, FileText, Link2, Mail, MapPin, Menu, Moon, Phone, Settings, ShieldCheck, Sun, Target, X } from "lucide-react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
@@ -448,6 +448,10 @@ var Textarea = React$1.forwardRef(({ className, ...props }, ref) => {
 	});
 });
 Textarea.displayName = "Textarea";
+var formFieldClassName = "h-12 min-h-12 px-4 text-base md:h-10 md:min-h-0 md:px-3 md:text-sm";
+var formTextareaClassName = "min-h-[7.5rem] px-4 py-3 text-base md:min-h-[80px] md:px-3 md:py-2 md:text-sm";
+var formLabelClassName = "text-base md:text-sm";
+var contactMethodOptionClassName = "flex min-h-12 cursor-pointer items-center gap-3 rounded-md border p-4 md:min-h-0 md:gap-2 md:p-3";
 function ConsultationModal({ trigger }) {
 	const { toast } = useToast();
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -539,11 +543,14 @@ function ConsultationModal({ trigger }) {
 				originalOnClick?.(e);
 			} })
 		}), /* @__PURE__ */ jsxs(DialogContent, {
-			className: "max-w-xl",
+			className: cn("max-w-xl gap-3 p-4 sm:gap-4 sm:p-6", "w-[calc(100%-2rem)] sm:w-full", "max-h-[90dvh] overflow-y-auto overscroll-contain", "max-sm:left-0 max-sm:top-0 max-sm:w-screen max-sm:max-w-none max-sm:h-[100dvh] max-sm:max-h-none max-sm:translate-x-0 max-sm:translate-y-0 max-sm:rounded-none"),
 			children: [
-				/* @__PURE__ */ jsx(DialogHeader, { children: /* @__PURE__ */ jsx(DialogTitle, { children: "Bezpłatna konsultacja" }) }),
+				/* @__PURE__ */ jsx(DialogHeader, {
+					className: "pr-8 text-left",
+					children: /* @__PURE__ */ jsx(DialogTitle, { children: "Bezpłatna konsultacja" })
+				}),
 				/* @__PURE__ */ jsxs("div", {
-					className: "space-y-2 text-sm",
+					className: "space-y-1.5 text-sm sm:space-y-2",
 					children: [
 						/* @__PURE__ */ jsx("a", {
 							href: "mailto:kontakt@aplint.pl",
@@ -572,40 +579,48 @@ function ConsultationModal({ trigger }) {
 					className: "space-y-4",
 					children: [
 						/* @__PURE__ */ jsx("p", {
-							className: "font-semibold text-foreground",
+							className: "text-base font-semibold text-foreground",
 							children: "Zamów kontakt"
 						}),
 						/* @__PURE__ */ jsxs("div", {
-							className: "space-y-2",
-							children: [/* @__PURE__ */ jsx(Label, { children: "Preferowana forma kontaktu" }), /* @__PURE__ */ jsxs(RadioGroup, {
+							className: "space-y-2.5",
+							children: [/* @__PURE__ */ jsx(Label, {
+								className: formLabelClassName,
+								children: "Preferowana forma kontaktu"
+							}), /* @__PURE__ */ jsxs(RadioGroup, {
 								value: contactMethod,
 								onValueChange: (value) => setContactMethod(value),
-								className: "grid grid-cols-2 gap-3",
+								className: "grid grid-cols-1 gap-2.5 min-[400px]:grid-cols-2 min-[400px]:gap-3",
 								children: [/* @__PURE__ */ jsxs("div", {
-									className: "flex items-center space-x-2 rounded-md border p-3",
+									className: contactMethodOptionClassName,
 									children: [/* @__PURE__ */ jsx(RadioGroupItem, {
 										value: "email",
-										id: "contact-method-email"
+										id: "contact-method-email",
+										className: "h-5 w-5 md:h-4 md:w-4"
 									}), /* @__PURE__ */ jsx(Label, {
 										htmlFor: "contact-method-email",
+										className: cn(formLabelClassName, "cursor-pointer font-normal"),
 										children: "Email"
 									})]
 								}), /* @__PURE__ */ jsxs("div", {
-									className: "flex items-center space-x-2 rounded-md border p-3",
+									className: contactMethodOptionClassName,
 									children: [/* @__PURE__ */ jsx(RadioGroupItem, {
 										value: "phone",
-										id: "contact-method-phone"
+										id: "contact-method-phone",
+										className: "h-5 w-5 md:h-4 md:w-4"
 									}), /* @__PURE__ */ jsx(Label, {
 										htmlFor: "contact-method-phone",
+										className: cn(formLabelClassName, "cursor-pointer font-normal"),
 										children: "Telefon"
 									})]
 								})]
 							})]
 						}),
 						/* @__PURE__ */ jsxs("div", {
-							className: "space-y-2",
+							className: "space-y-2.5",
 							children: [/* @__PURE__ */ jsxs(Label, {
 								htmlFor: "contact-value",
+								className: formLabelClassName,
 								children: ["Twój ", contactMethod === "email" ? "email" : "telefon"]
 							}), /* @__PURE__ */ jsx(Input, {
 								id: "contact-value",
@@ -613,37 +628,43 @@ function ConsultationModal({ trigger }) {
 								value: contactValue,
 								onChange: (e) => setContactValue(e.target.value),
 								placeholder: contactMethod === "email" ? "np. jan@firma.pl" : "np. +48 600 123 456",
+								className: formFieldClassName,
 								required: true
 							})]
 						}),
 						/* @__PURE__ */ jsxs("div", {
-							className: "space-y-2",
+							className: "space-y-2.5",
 							children: [/* @__PURE__ */ jsx(Label, {
 								htmlFor: "name-or-company",
+								className: formLabelClassName,
 								children: "Imię i nazwisko albo firma"
 							}), /* @__PURE__ */ jsx(Input, {
 								id: "name-or-company",
 								value: nameOrCompany,
 								onChange: (e) => setNameOrCompany(e.target.value),
 								placeholder: "np. Jan Kowalski / Firma XYZ",
+								className: formFieldClassName,
 								required: true
 							})]
 						}),
 						/* @__PURE__ */ jsxs("div", {
-							className: "space-y-2",
+							className: "space-y-2.5",
 							children: [/* @__PURE__ */ jsx(Label, {
 								htmlFor: "details",
+								className: formLabelClassName,
 								children: "Dodatkowe informacje (opcjonalnie)"
 							}), /* @__PURE__ */ jsx(Textarea, {
 								id: "details",
 								value: details,
 								onChange: (e) => setDetails(e.target.value),
-								placeholder: "Krótko opisz, czego potrzebujesz."
+								placeholder: "Krótko opisz, czego potrzebujesz.",
+								className: formTextareaClassName
 							})]
 						}),
 						/* @__PURE__ */ jsx(Button, {
 							type: "submit",
-							className: "w-full",
+							size: "lg",
+							className: "h-12 w-full text-base md:h-11 md:text-sm",
 							disabled: isSubmitting,
 							children: isSubmitting ? "Wysyłanie..." : "Zamów kontakt"
 						})
@@ -659,6 +680,7 @@ var HeroSection = () => {
 	return /* @__PURE__ */ jsxs("section", {
 		className: "relative scroll-mt-14 min-h-[calc(85svh-3.5rem)] flex items-center justify-center bg-gradient-bg overflow-visible",
 		children: [/* @__PURE__ */ jsxs("div", {
+			"aria-hidden": "true",
 			className: "absolute inset-0 overflow-hidden pointer-events-none",
 			children: [
 				/* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background" }),
@@ -765,7 +787,7 @@ var HeroSection = () => {
 				})
 			]
 		}), /* @__PURE__ */ jsxs("div", {
-			className: "relative container mx-auto px-6 text-center",
+			className: "relative container mx-auto text-center",
 			children: [
 				/* @__PURE__ */ jsxs("div", {
 					className: "mb-8 flex justify-center",
@@ -878,7 +900,7 @@ var highlights = [
 ];
 function HighlightsSection() {
 	return /* @__PURE__ */ jsx("section", {
-		className: "py-20 px-6 bg-gradient-to-b from-background to-muted/20",
+		className: "py-20 bg-gradient-to-b from-background to-muted/20",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto",
 			children: [/* @__PURE__ */ jsxs("div", {
@@ -916,7 +938,7 @@ function HighlightsSection() {
 									/* @__PURE__ */ jsx("div", {
 										className: "flex items-center justify-center mb-4",
 										children: /* @__PURE__ */ jsx("span", {
-											className: "inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary",
+											className: "inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 font-semibold text-primary",
 											children: h.label
 										})
 									}),
@@ -951,9 +973,8 @@ function HighlightsSection() {
 //#region src/components/ForWhoSection.tsx
 var forWho = [
 	{
-		icon: Factory,
 		title: "Dział produkcji",
-		description: "Optymalizacja planowania, predykcja awarii, kontrola jakości. AI analizuje dane z maszyn i systemów, żebyś mógł podejmować lepsze decyzje - szybciej.",
+		description: "Optymalizacja planowania, predykcja awarii, kontrola jakości. AI analizuje dane z maszyn i systemów, żebyś mógł podejmować lepsze decyzje — szybciej.",
 		bullets: [
 			"Automatyczne planowanie produkcji",
 			"Wczesne wykrywanie anomalii",
@@ -961,9 +982,8 @@ var forWho = [
 		]
 	},
 	{
-		icon: BarChart3,
 		title: "Dział finansów",
-		description: "Automatyzacja powtarzalnych zadań - od przetwarzania faktur po tworzenie wniosków zakupowych. Mniej ręcznej pracy, mniej błędów, więcej czasu na analizę.",
+		description: "Automatyzacja powtarzalnych zadań — od przetwarzania faktur po tworzenie wniosków zakupowych. Mniej ręcznej pracy, mniej błędów, więcej czasu na analizę.",
 		bullets: [
 			"Automatyczne tworzenie wniosków zakupowych",
 			"Przetwarzanie i kategoryzacja faktur",
@@ -971,7 +991,6 @@ var forWho = [
 		]
 	},
 	{
-		icon: Package,
 		title: "Dział logistyki",
 		description: "Inteligentna analiza zapytań ofertowych, automatyzacja dokumentacji transportowej, optymalizacja zapasów. AI odciąża Twój zespół od rutynowych zadań.",
 		bullets: [
@@ -982,70 +1001,48 @@ var forWho = [
 	}
 ];
 function ForWhoSection() {
-	return /* @__PURE__ */ jsxs("section", {
+	return /* @__PURE__ */ jsx("section", {
 		id: "dla-kogo",
-		className: "relative scroll-mt-14 py-20 px-6 overflow-hidden",
-		children: [/* @__PURE__ */ jsxs("div", {
-			className: "absolute inset-0 pointer-events-none",
-			children: [
-				/* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" }),
-				/* @__PURE__ */ jsx("div", { className: "absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,hsl(var(--primary))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary))_1px,transparent_1px)] [background-size:56px_56px]" }),
-				/* @__PURE__ */ jsx("div", { className: "absolute -top-24 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl" }),
-				/* @__PURE__ */ jsx("div", { className: "absolute bottom-0 right-10 w-96 h-96 bg-primary-glow/10 rounded-full blur-3xl" })
-			]
-		}), /* @__PURE__ */ jsxs("div", {
-			className: "container mx-auto relative",
-			children: [/* @__PURE__ */ jsxs("div", {
-				className: "text-center mb-16",
-				children: [
-					/* @__PURE__ */ jsx("h2", {
-						className: "text-3xl md:text-4xl font-bold mb-4 text-foreground text-balance",
-						children: "Wspieramy działy, które mają najwięcej do zyskania"
-					}),
-					/* @__PURE__ */ jsx("p", {
-						className: "text-xl text-muted-foreground max-w-3xl mx-auto text-balance",
-						children: "Wspieramy średnie i duże przedsiębiorstwa (30-1000 pracowników), które chcą usprawnić codzienne operacje bez rewolucji w IT."
-					}),
-					/* @__PURE__ */ jsx("div", { className: "w-24 h-1 bg-gradient-primary mx-auto mt-6" })
-				]
+		className: "scroll-mt-14 py-20",
+		children: /* @__PURE__ */ jsxs("div", {
+			className: "container mx-auto max-w-5xl px-4",
+			children: [/* @__PURE__ */ jsxs("header", {
+				className: "mb-12 border-b border-foreground/15 pb-10",
+				children: [/* @__PURE__ */ jsx("h2", {
+					className: "text-3xl md:text-4xl font-bold text-foreground text-balance mb-4",
+					children: "Wspieramy działy, które mają najwięcej do zyskania"
+				}), /* @__PURE__ */ jsx("p", {
+					className: "text-lg text-muted-foreground max-w-3xl leading-relaxed text-balance",
+					children: "Pracujemy ze średnimi i dużymi przedsiębiorstwami (30–1000 pracowników), które chcą usprawnić codzienne operacje bez rewolucji w IT."
+				})]
 			}), /* @__PURE__ */ jsx("div", {
-				className: "grid lg:grid-cols-3 gap-8",
-				children: forWho.map((item) => /* @__PURE__ */ jsxs(Card, {
-					className: "group max-w-md mx-auto relative bg-gradient-to-br from-primary/15 to-transparent border-border bg-card/60 backdrop-blur-sm",
-					children: [/* @__PURE__ */ jsxs(CardHeader, {
-						className: "text-center relative z-10",
-						children: [/* @__PURE__ */ jsx("div", {
-							className: "mx-auto w-16 h-16 rounded-2xl bg-primary/10 ring-1 ring-primary/20 flex items-center justify-center mb-4",
-							children: /* @__PURE__ */ jsx(item.icon, {
-								className: "h-7 w-7 text-primary",
-								"aria-hidden": "true"
-							})
-						}), /* @__PURE__ */ jsx(CardTitle, {
-							className: "text-xl text-foreground",
-							children: item.title
-						})]
-					}), /* @__PURE__ */ jsxs(CardContent, {
-						className: "relative z-10",
-						children: [/* @__PURE__ */ jsx(CardDescription, {
-							className: "text-muted-foreground leading-relaxed mb-4 text-base md:text-lg",
-							children: item.description
-						}), /* @__PURE__ */ jsx("ul", {
-							className: "space-y-3 text-muted-foreground",
-							children: item.bullets.map((b) => /* @__PURE__ */ jsxs("li", {
-								className: "flex items-start gap-3 rounded-lg border border-primary/15 bg-primary/5 px-3 py-2 transition-colors hover:border-primary/25",
-								children: [/* @__PURE__ */ jsx(Check, {
-									className: "mt-0.5 h-4 w-4 text-primary",
-									"aria-hidden": "true"
-								}), /* @__PURE__ */ jsx("span", {
-									className: "leading-relaxed text-sm md:text-base",
-									children: b
-								})]
-							}, b))
-						})]
-					})]
+				className: "divide-y divide-foreground/15",
+				children: forWho.map((item) => /* @__PURE__ */ jsxs("article", {
+					className: "grid gap-8 py-12 first:pt-0 last:pb-0 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-12 lg:gap-16",
+					children: [/* @__PURE__ */ jsx("h3", {
+						className: "text-2xl md:text-3xl font-bold text-foreground text-balance",
+						children: item.title
+					}), /* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("p", {
+						className: "text-muted-foreground leading-relaxed mb-8 md:mb-10",
+						children: item.description
+					}), /* @__PURE__ */ jsx("ul", {
+						role: "list",
+						className: "border-t border-foreground/10 divide-y divide-foreground/10",
+						children: item.bullets.map((bullet, index) => /* @__PURE__ */ jsxs("li", {
+							className: "flex items-baseline gap-6 py-4 first:pt-5",
+							children: [/* @__PURE__ */ jsx("span", {
+								className: "shrink-0 text-sm font-medium tabular-nums text-muted-foreground/50",
+								"aria-hidden": "true",
+								children: String(index + 1)
+							}), /* @__PURE__ */ jsx("span", {
+								className: "text-foreground/90 leading-relaxed",
+								children: bullet
+							})]
+						}, bullet))
+					})] })]
 				}, item.title))
 			})]
-		})]
+		})
 	});
 }
 //#endregion
@@ -1053,22 +1050,15 @@ function ForWhoSection() {
 var ServicesSection = () => {
 	return /* @__PURE__ */ jsx("section", {
 		id: "oferta",
-		className: "scroll-mt-14 py-20 px-6",
+		className: "scroll-mt-14 py-20",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto",
 			children: [/* @__PURE__ */ jsxs("div", {
 				className: "text-center mb-16",
-				children: [
-					/* @__PURE__ */ jsx("h2", {
-						className: "text-3xl md:text-4xl font-bold mb-4 text-foreground",
-						children: "Co robimy"
-					}),
-					/* @__PURE__ */ jsx("p", {
-						className: "text-lg text-muted-foreground mb-6 max-w-2xl mx-auto text-balance",
-						children: "Trzy obszary, w których AI przynosi wymierne korzyści"
-					}),
-					/* @__PURE__ */ jsx("div", { className: "w-24 h-1 bg-gradient-primary mx-auto" })
-				]
+				children: [/* @__PURE__ */ jsx("h2", {
+					className: "text-3xl md:text-4xl font-bold mb-4 text-foreground",
+					children: "Trzy obszary, w których AI przynosi wymierne korzyści"
+				}), /* @__PURE__ */ jsx("div", { className: "w-24 h-1 bg-gradient-primary mx-auto" })]
 			}), /* @__PURE__ */ jsx("div", {
 				className: "grid lg:grid-cols-3 gap-8",
 				children: [
@@ -1148,7 +1138,7 @@ var ServicesSection = () => {
 var ProcessSection = () => {
 	return /* @__PURE__ */ jsx("section", {
 		id: "jak-dzialamy",
-		className: "scroll-mt-14 py-20 px-6",
+		className: "scroll-mt-14 py-20",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto",
 			children: [
@@ -1167,7 +1157,7 @@ var ProcessSection = () => {
 					]
 				}),
 				/* @__PURE__ */ jsx("div", {
-					className: "grid lg:grid-cols-2 gap-8 mb-16",
+					className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16",
 					children: [
 						{
 							number: "1",
@@ -1198,29 +1188,29 @@ var ProcessSection = () => {
 							deliverable: "SLA, monitoring, regularne przeglądy i aktualizacje"
 						}
 					].map((step) => /* @__PURE__ */ jsxs(Card, {
-						className: "group relative overflow-hidden border-border bg-card/70 backdrop-blur-sm hover:shadow-elegant transition-all duration-500",
+						className: "group relative flex h-full flex-col overflow-hidden border-border bg-card/70 backdrop-blur-sm hover:shadow-elegant transition-all duration-500",
 						children: [
 							/* @__PURE__ */ jsx("div", {
-								className: "absolute top-4 right-4 text-5xl md:text-6xl font-bold text-primary/25",
+								className: "absolute top-4 right-4 text-4xl lg:text-5xl font-bold text-primary/25",
 								children: step.number
 							}),
 							/* @__PURE__ */ jsxs(CardHeader, {
-								className: "relative z-10",
+								className: "relative z-10 pb-2",
 								children: [/* @__PURE__ */ jsx(CardTitle, {
-									className: "text-xl text-foreground",
+									className: "text-lg text-foreground pr-10",
 									children: step.title
 								}), /* @__PURE__ */ jsx("div", {
-									className: "text-sm text-muted-foreground mb-4",
+									className: "text-sm text-muted-foreground",
 									children: step.time
 								})]
 							}),
 							/* @__PURE__ */ jsxs(CardContent, {
-								className: "relative z-10",
+								className: "relative z-10 flex flex-1 flex-col pt-0",
 								children: [/* @__PURE__ */ jsx(CardDescription, {
-									className: "text-muted-foreground leading-relaxed mb-4",
+									className: "text-sm text-muted-foreground leading-relaxed mb-4 flex-1",
 									children: step.description
 								}), /* @__PURE__ */ jsxs("div", {
-									className: "space-y-2",
+									className: "mt-auto space-y-2",
 									children: [/* @__PURE__ */ jsx("div", {
 										className: "text-xs font-semibold text-muted-foreground/70 uppercase tracking-wide",
 										children: "Co dostarczamy"
@@ -1275,7 +1265,7 @@ function Badge({ className, variant, ...props }) {
 var PortfolioSection = () => {
 	return /* @__PURE__ */ jsx("section", {
 		id: "case-study",
-		className: "scroll-mt-14 py-20 px-6 bg-gradient-to-b from-muted/10 to-background",
+		className: "scroll-mt-14 py-20 bg-gradient-to-b from-muted/10 to-background",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto",
 			children: [/* @__PURE__ */ jsxs("div", {
@@ -1401,7 +1391,7 @@ var PortfolioSection = () => {
 var TeamSection = () => {
 	return /* @__PURE__ */ jsx("section", {
 		id: "zespol",
-		className: "scroll-mt-14 py-20 px-6 bg-gradient-to-b from-background to-muted/20",
+		className: "scroll-mt-14 py-20 bg-gradient-to-b from-background to-muted/20",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto",
 			children: [/* @__PURE__ */ jsxs("div", {
@@ -1501,163 +1491,186 @@ var TeamSection = () => {
 };
 //#endregion
 //#region src/components/TechnologiesSection.tsx
+var privacyPoints = [
+	{
+		title: "Pełna zgodność z RODO",
+		description: "Od projektowania po wdrożenie i utrzymanie."
+	},
+	{
+		title: "Wdrożenie on-premise",
+		description: "AI może działać lokalnie, na serwerach klienta."
+	},
+	{
+		title: "Opcja zero transferu danych",
+		description: "Informacje nie muszą opuszczać infrastruktury firmy, jeśli jest to wymagane."
+	},
+	{
+		title: "Pełna kontrola",
+		description: "Zachowujesz 100% własności i nadzoru nad danymi."
+	},
+	{
+		title: "Audytowalność",
+		description: "Przejrzyste procesy gotowe na kontrole i certyfikacje."
+	}
+];
 var TechnologiesSection = () => {
-	return /* @__PURE__ */ jsx("section", {
+	return /* @__PURE__ */ jsxs("section", {
 		id: "technologie",
-		className: "scroll-mt-14 py-20 px-6",
-		children: /* @__PURE__ */ jsxs("div", {
-			className: "container mx-auto",
-			children: [
-				/* @__PURE__ */ jsxs("div", {
-					className: "text-center mb-16",
-					children: [
-						/* @__PURE__ */ jsx("h2", {
-							className: "text-3xl md:text-4xl font-bold mb-4 text-foreground",
-							children: "Technologie, które stosujemy"
+		className: "scroll-mt-14",
+		children: [/* @__PURE__ */ jsxs("div", {
+			className: "container mx-auto py-20",
+			children: [/* @__PURE__ */ jsxs("div", {
+				className: "text-center mb-16",
+				children: [
+					/* @__PURE__ */ jsx("h2", {
+						className: "text-3xl md:text-4xl font-bold mb-4 text-foreground",
+						children: "Technologie, które stosujemy"
+					}),
+					/* @__PURE__ */ jsx("p", {
+						className: "text-lg text-muted-foreground mb-6 max-w-2xl mx-auto",
+						children: "Sprawdzone narzędzia dopasowane do Twojej infrastruktury"
+					}),
+					/* @__PURE__ */ jsx("div", { className: "w-24 h-1 bg-gradient-primary mx-auto" })
+				]
+			}), /* @__PURE__ */ jsx("div", {
+				className: "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-3",
+				children: [
+					{
+						name: "AWS",
+						logo: "/images/tech-logos/aws.svg",
+						logoInv: "/images/tech-logos/aws-inv.svg"
+					},
+					{
+						name: "Google Cloud",
+						logo: "/images/tech-logos/google-cloud.svg"
+					},
+					{
+						name: "Azure",
+						logo: "/images/tech-logos/azure.svg"
+					},
+					{
+						name: "Docker",
+						logo: "/images/tech-logos/docker.svg"
+					},
+					{
+						name: "React",
+						logo: "/images/tech-logos/react.svg"
+					},
+					{
+						name: "TypeScript",
+						logo: "/images/tech-logos/typescript.svg"
+					},
+					{
+						name: ".NET",
+						logo: "/images/tech-logos/dotnet.svg"
+					},
+					{
+						name: "Node.js",
+						logo: "/images/tech-logos/nodejs.svg"
+					},
+					{
+						name: "OpenAI",
+						logo: "/images/tech-logos/openai.svg",
+						logoInv: "/images/tech-logos/openai-inv.svg"
+					},
+					{
+						name: "Anthropic",
+						logo: "/images/tech-logos/anthropic.svg",
+						logoInv: "/images/tech-logos/anthropic-inv.svg"
+					},
+					{
+						name: "LLaMA",
+						logo: "/images/tech-logos/llama.svg",
+						logoInv: "/images/tech-logos/llama-inv.svg"
+					},
+					{
+						name: "LangChain",
+						logo: "/images/tech-logos/langchain.svg",
+						logoInv: "/images/tech-logos/langchain-inv.svg"
+					},
+					{
+						name: "Qdrant",
+						logo: "/images/tech-logos/qdrant.svg"
+					},
+					{
+						name: "MS SQL",
+						logo: "/images/tech-logos/mssql.svg",
+						logoInv: "/images/tech-logos/mssql-inv.svg"
+					},
+					{
+						name: "PostgreSQL",
+						logo: "/images/tech-logos/postgresql.svg"
+					}
+				].map((tech) => /* @__PURE__ */ jsxs("div", {
+					className: "flex flex-col items-center justify-center gap-2 rounded-md border border-border/60 bg-muted/30 p-3 transition-colors hover:bg-primary/5",
+					children: [/* @__PURE__ */ jsx("div", {
+						className: "flex h-10 w-10 shrink-0 items-center justify-center rounded-md p-1",
+						children: tech.logoInv ? /* @__PURE__ */ jsxs(Fragment, { children: [/* @__PURE__ */ jsx("img", {
+							src: tech.logo,
+							alt: `${tech.name} logo`,
+							className: "h-8 w-8 object-contain dark:hidden",
+							loading: "lazy"
+						}), /* @__PURE__ */ jsx("img", {
+							src: tech.logoInv,
+							alt: "",
+							className: "h-8 w-8 hidden object-contain dark:block",
+							loading: "lazy",
+							"aria-hidden": true
+						})] }) : /* @__PURE__ */ jsx("img", {
+							src: tech.logo,
+							alt: `${tech.name} logo`,
+							className: "h-8 w-8 object-contain",
+							loading: "lazy"
+						})
+					}), /* @__PURE__ */ jsx("span", {
+						className: "text-[11px] text-center text-muted-foreground leading-tight",
+						children: tech.name
+					})]
+				}, tech.name))
+			})]
+		}), /* @__PURE__ */ jsx("div", {
+			className: "bg-card border-y border-border/40 py-20",
+			children: /* @__PURE__ */ jsx("div", {
+				className: "container mx-auto",
+				children: /* @__PURE__ */ jsxs("div", {
+					className: "grid gap-12 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-12 lg:gap-20 items-start",
+					children: [/* @__PURE__ */ jsxs("div", { children: [
+						/* @__PURE__ */ jsx("h3", {
+							className: "text-2xl md:text-3xl font-bold text-foreground mb-6 text-balance",
+							children: "Prywatność i zgodność"
 						}),
 						/* @__PURE__ */ jsx("p", {
-							className: "text-lg text-muted-foreground mb-6 max-w-2xl mx-auto",
-							children: "Sprawdzone narzędzia dopasowane do Twojej infrastruktury"
+							className: "text-lg md:text-xl text-muted-foreground leading-relaxed mb-4 text-balance",
+							children: "Prywatność i zgodność regulacyjna są wbudowane w każde nasze rozwiązanie."
 						}),
-						/* @__PURE__ */ jsx("div", { className: "w-24 h-1 bg-gradient-primary mx-auto" })
-					]
-				}),
-				/* @__PURE__ */ jsx("div", {
-					className: "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-3 mb-12",
-					children: [
-						{
-							name: "AWS",
-							logo: "/images/tech-logos/aws.svg",
-							logoInv: "/images/tech-logos/aws-inv.svg"
-						},
-						{
-							name: "Google Cloud",
-							logo: "/images/tech-logos/google-cloud.svg"
-						},
-						{
-							name: "Azure",
-							logo: "/images/tech-logos/azure.svg"
-						},
-						{
-							name: "Docker",
-							logo: "/images/tech-logos/docker.svg"
-						},
-						{
-							name: "React",
-							logo: "/images/tech-logos/react.svg"
-						},
-						{
-							name: "TypeScript",
-							logo: "/images/tech-logos/typescript.svg"
-						},
-						{
-							name: ".NET",
-							logo: "/images/tech-logos/dotnet.svg"
-						},
-						{
-							name: "Node.js",
-							logo: "/images/tech-logos/nodejs.svg"
-						},
-						{
-							name: "OpenAI",
-							logo: "/images/tech-logos/openai.svg",
-							logoInv: "/images/tech-logos/openai-inv.svg"
-						},
-						{
-							name: "Anthropic",
-							logo: "/images/tech-logos/anthropic.svg",
-							logoInv: "/images/tech-logos/anthropic-inv.svg"
-						},
-						{
-							name: "LLaMA",
-							logo: "/images/tech-logos/llama.svg",
-							logoInv: "/images/tech-logos/llama-inv.svg"
-						},
-						{
-							name: "LangChain",
-							logo: "/images/tech-logos/langchain.svg",
-							logoInv: "/images/tech-logos/langchain-inv.svg"
-						},
-						{
-							name: "Qdrant",
-							logo: "/images/tech-logos/qdrant.svg"
-						},
-						{
-							name: "MS SQL",
-							logo: "/images/tech-logos/mssql.svg",
-							logoInv: "/images/tech-logos/mssql-inv.svg"
-						},
-						{
-							name: "PostgreSQL",
-							logo: "/images/tech-logos/postgresql.svg"
-						}
-					].map((tech) => /* @__PURE__ */ jsxs("div", {
-						className: "flex flex-col items-center justify-center gap-2 rounded-md border border-border/60 bg-muted/30 p-3 transition-colors hover:bg-primary/5",
-						children: [/* @__PURE__ */ jsx("div", {
-							className: "flex h-10 w-10 shrink-0 items-center justify-center rounded-md p-1",
-							children: tech.logoInv ? /* @__PURE__ */ jsxs(Fragment, { children: [/* @__PURE__ */ jsx("img", {
-								src: tech.logo,
-								alt: `${tech.name} logo`,
-								className: "h-8 w-8 object-contain dark:hidden",
-								loading: "lazy"
-							}), /* @__PURE__ */ jsx("img", {
-								src: tech.logoInv,
-								alt: "",
-								className: "h-8 w-8 hidden object-contain dark:block",
-								loading: "lazy",
-								"aria-hidden": true
-							})] }) : /* @__PURE__ */ jsx("img", {
-								src: tech.logo,
-								alt: `${tech.name} logo`,
-								className: "h-8 w-8 object-contain",
-								loading: "lazy"
-							})
-						}), /* @__PURE__ */ jsx("span", {
-							className: "text-[11px] text-center text-muted-foreground leading-tight",
-							children: tech.name
-						})]
-					}, tech.name))
-				}),
-				/* @__PURE__ */ jsxs("div", {
-					className: "bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-lg p-8 border border-primary/20 backdrop-blur-sm",
-					children: [/* @__PURE__ */ jsxs("h3", {
-						className: "text-2xl font-bold text-foreground mb-4",
-						children: [/* @__PURE__ */ jsx(ShieldCheck, {
-							className: "inline-block mr-2 h-7 w-7 text-primary align-[-2px]",
-							"aria-hidden": "true"
-						}), "Prywatność i zgodność"]
-					}), /* @__PURE__ */ jsxs("div", {
-						className: "text-muted-foreground text-lg leading-relaxed",
-						children: [/* @__PURE__ */ jsxs("p", {
-							className: "mb-3 text-balance",
-							children: [
-								"Prywatność i zgodność regulacyjna są wbudowane w każde nasze rozwiązanie.",
-								" ",
-								/* @__PURE__ */ jsx("strong", { children: "Dostosowujemy model wdrożenia do wymagań klienta" }),
-								" ",
-								"- od rozwiązań chmurowych po całkowicie lokalne instalacje:"
-							]
-						}), /* @__PURE__ */ jsxs("ul", {
-							className: "space-y-2 list-none",
-							children: [
-								/* @__PURE__ */ jsxs("li", { children: [/* @__PURE__ */ jsx("strong", { children: "Pełna zgodność z RODO" }), " - od projektowania po wdrożenie i utrzymanie"] }),
-								/* @__PURE__ */ jsxs("li", { children: [/* @__PURE__ */ jsx("strong", { children: "Możliwość wdrożenia on-premise" }), " - AI może działać lokalnie, na serwerach klienta"] }),
-								/* @__PURE__ */ jsxs("li", { children: [/* @__PURE__ */ jsx("strong", { children: "Opcja zero transferu danych" }), " - informacje nie muszą opuszczać infrastruktury firmy, jeśli jest to wymagane"] }),
-								/* @__PURE__ */ jsxs("li", { children: [/* @__PURE__ */ jsx("strong", { children: "Pełna kontrola" }), " - zachowujesz 100% własności i nadzoru nad danymi"] }),
-								/* @__PURE__ */ jsxs("li", { children: [/* @__PURE__ */ jsx("strong", { children: "Audytowalność" }), " - przejrzyste procesy gotowe na kontrole i certyfikacje"] })
-							]
-						})]
+						/* @__PURE__ */ jsx("p", {
+							className: "text-lg md:text-xl font-semibold text-foreground leading-relaxed text-balance",
+							children: "Dostosowujemy model wdrożenia do wymagań klienta — od chmury po całkowicie lokalne instalacje."
+						})
+					] }), /* @__PURE__ */ jsx("ul", {
+						role: "list",
+						className: "border-y border-foreground/10 divide-y divide-foreground/10",
+						children: privacyPoints.map((point) => /* @__PURE__ */ jsxs("li", {
+							className: "py-5 first:pt-6 last:pb-6",
+							children: [/* @__PURE__ */ jsx("p", {
+								className: "font-semibold text-foreground",
+								children: point.title
+							}), /* @__PURE__ */ jsx("p", {
+								className: "mt-1 text-muted-foreground leading-relaxed",
+								children: point.description
+							})]
+						}, point.title))
 					})]
 				})
-			]
-		})
+			})
+		})]
 	});
 };
 //#endregion
 //#region src/components/ContactSection.tsx
 var ContactSection = () => {
 	return /* @__PURE__ */ jsx("section", {
-		className: "scroll-mt-14 py-20 px-6 bg-gradient-to-b from-background to-muted/20",
+		className: "scroll-mt-14 py-20 bg-gradient-to-b from-background to-muted/20",
 		id: "kontakt",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto",
@@ -1768,7 +1781,7 @@ var ContactSection = () => {
 //#region src/components/PreContactCtaSection.tsx
 function PreContactCtaSection() {
 	return /* @__PURE__ */ jsxs("section", {
-		className: "relative py-24 px-6 overflow-hidden",
+		className: "relative py-24 overflow-hidden",
 		children: [/* @__PURE__ */ jsxs("div", {
 			className: "absolute inset-0 pointer-events-none",
 			children: [
@@ -1780,7 +1793,7 @@ function PreContactCtaSection() {
 		}), /* @__PURE__ */ jsx("div", {
 			className: "container mx-auto relative",
 			children: /* @__PURE__ */ jsxs("div", {
-				className: "max-w-4xl mx-auto rounded-2xl border border-primary/20 bg-card/70 backdrop-blur-md shadow-elegant p-8 md:p-12 text-center",
+				className: "max-w-4xl mx-auto rounded-2xl border border-primary/20 bg-card/70 backdrop-blur-md shadow-elegant p-5 sm:p-8 md:p-12 text-center",
 				children: [
 					/* @__PURE__ */ jsx("h2", {
 						className: "text-3xl md:text-5xl font-bold mb-5 text-foreground",
@@ -1807,7 +1820,7 @@ function PreContactCtaSection() {
 //#endregion
 //#region src/pages/Index.tsx
 var Index = () => {
-	return /* @__PURE__ */ jsxs("div", {
+	return /* @__PURE__ */ jsxs("article", {
 		className: "min-h-screen bg-background",
 		children: [
 			/* @__PURE__ */ jsx(HeroSection, {}),
@@ -1998,7 +2011,7 @@ var NotFound = () => {
 					children: /* @__PURE__ */ jsx(RobotIllustration, {})
 				})
 			}),
-			/* @__PURE__ */ jsx("main", {
+			/* @__PURE__ */ jsx("div", {
 				className: "relative z-10 mx-auto w-full max-w-4xl px-4 py-16 sm:px-6 sm:py-20",
 				children: /* @__PURE__ */ jsxs("section", {
 					className: "rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md p-7 sm:p-9 shadow-[var(--shadow-elegant)]",
@@ -2173,7 +2186,7 @@ var NotFound = () => {
 //#region src/pages/PrivacyPolicy.tsx
 var PrivacyPolicy = () => {
 	return /* @__PURE__ */ jsx("div", {
-		className: "min-h-screen bg-background px-6 py-20",
+		className: "min-h-screen bg-background py-20",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto max-w-3xl",
 			children: [
@@ -2461,7 +2474,7 @@ var faqItems = [
 ];
 var FAQ = () => {
 	return /* @__PURE__ */ jsx("div", {
-		className: "min-h-screen bg-background px-6 py-20",
+		className: "min-h-screen bg-background py-20",
 		children: /* @__PURE__ */ jsxs("div", {
 			className: "container mx-auto max-w-3xl",
 			children: [
@@ -2851,7 +2864,7 @@ function useScrollToHashOnHome() {
 //#region src/components/FooterSection.tsx
 function FooterSection() {
 	return /* @__PURE__ */ jsx("footer", {
-		className: "py-16 px-6 border-t border-border bg-background/50",
+		className: "py-16 border-t border-border bg-background/50",
 		children: /* @__PURE__ */ jsx("div", {
 			className: "container mx-auto",
 			children: /* @__PURE__ */ jsxs("div", {
@@ -2953,7 +2966,7 @@ function AppShell() {
 	return /* @__PURE__ */ jsxs(Fragment, { children: [/* @__PURE__ */ jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur shadow-sm",
 		children: /* @__PURE__ */ jsxs("div", {
-			className: "mx-auto px-6 py-3 flex items-center gap-4",
+			className: "container mx-auto py-3 flex items-center gap-4",
 			children: [
 				/* @__PURE__ */ jsx("div", {
 					className: "flex-none w-24",
@@ -3039,15 +3052,19 @@ function AppShell() {
 								}),
 								/* @__PURE__ */ jsxs("div", {
 									className: "mt-4 pt-4 border-t border-border flex flex-col gap-3",
-									children: [/* @__PURE__ */ jsx("a", {
-										href: "tel:+48725116342",
-										className: "px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground",
-										children: "Zadzwoń: +48 725 116 342"
-									}), /* @__PURE__ */ jsx(ConsultationModal, { trigger: /* @__PURE__ */ jsx(Button, {
-										variant: "hero",
-										className: "w-full",
-										children: "Bezpłatna konsultacja"
-									}) })]
+									children: [
+										/* @__PURE__ */ jsx(ThemeToggle, {}),
+										/* @__PURE__ */ jsx("a", {
+											href: "tel:+48725116342",
+											className: "px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground",
+											children: "Zadzwoń: +48 725 116 342"
+										}),
+										/* @__PURE__ */ jsx(ConsultationModal, { trigger: /* @__PURE__ */ jsx(Button, {
+											variant: "hero",
+											className: "w-full",
+											children: "Bezpłatna konsultacja"
+										}) })
+									]
 								})
 							]
 						})
@@ -3108,12 +3125,21 @@ function AppShell() {
 							href: "tel:+48725116342",
 							className: "hidden md:inline text-sm font-medium text-foreground/80 hover:text-foreground whitespace-nowrap transition-colors text-right",
 							children: "Zadzwoń: +48 725 116 342"
-						}), /* @__PURE__ */ jsx(ConsultationModal, { trigger: /* @__PURE__ */ jsx(Button, {
+						}), /* @__PURE__ */ jsx(ConsultationModal, { trigger: /* @__PURE__ */ jsxs(Button, {
 							variant: "hero",
-							className: "font-semibold",
-							children: "Bezpłatna konsultacja"
+							className: "font-semibold text-sm px-3 sm:px-4",
+							children: [/* @__PURE__ */ jsx("span", {
+								className: "sm:hidden",
+								children: "Konsultacja"
+							}), /* @__PURE__ */ jsx("span", {
+								className: "hidden sm:inline",
+								children: "Bezpłatna konsultacja"
+							})]
 						}) })]
-					}), /* @__PURE__ */ jsx(ThemeToggle, {})]
+					}), /* @__PURE__ */ jsx("div", {
+						className: "hidden lg:block",
+						children: /* @__PURE__ */ jsx(ThemeToggle, {})
+					})]
 				})
 			]
 		})
@@ -3122,24 +3148,28 @@ function AppShell() {
 		children: /* @__PURE__ */ jsxs(TooltipProvider, { children: [
 			/* @__PURE__ */ jsx(Toaster$2, {}),
 			/* @__PURE__ */ jsx(Toaster$1, {}),
-			/* @__PURE__ */ jsxs(Routes, { children: [
-				/* @__PURE__ */ jsx(Route, {
-					path: "/",
-					element: /* @__PURE__ */ jsx(Index, {})
-				}),
-				/* @__PURE__ */ jsx(Route, {
-					path: "/polityka-prywatnosci",
-					element: /* @__PURE__ */ jsx(PrivacyPolicy, {})
-				}),
-				/* @__PURE__ */ jsx(Route, {
-					path: "/faq",
-					element: /* @__PURE__ */ jsx(FAQ, {})
-				}),
-				/* @__PURE__ */ jsx(Route, {
-					path: "*",
-					element: /* @__PURE__ */ jsx(NotFound, {})
-				})
-			] }),
+			/* @__PURE__ */ jsx("main", {
+				id: "main-content",
+				tabIndex: -1,
+				children: /* @__PURE__ */ jsxs(Routes, { children: [
+					/* @__PURE__ */ jsx(Route, {
+						path: "/",
+						element: /* @__PURE__ */ jsx(Index, {})
+					}),
+					/* @__PURE__ */ jsx(Route, {
+						path: "/polityka-prywatnosci",
+						element: /* @__PURE__ */ jsx(PrivacyPolicy, {})
+					}),
+					/* @__PURE__ */ jsx(Route, {
+						path: "/faq",
+						element: /* @__PURE__ */ jsx(FAQ, {})
+					}),
+					/* @__PURE__ */ jsx(Route, {
+						path: "*",
+						element: /* @__PURE__ */ jsx(NotFound, {})
+					})
+				] })
+			}),
 			/* @__PURE__ */ jsx(FooterSection, {})
 		] })
 	})] });
