@@ -121,7 +121,7 @@ const NotFound = () => {
         </div>
       </div>
 
-      <main className="relative z-10 mx-auto w-full max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
         <section className="rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md p-7 sm:p-9 shadow-[var(--shadow-elegant)]">
           {/* Terminal header */}
           <div className="flex items-center gap-3">
@@ -246,7 +246,7 @@ const NotFound = () => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };

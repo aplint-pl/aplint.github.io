@@ -292,7 +292,7 @@ function AppShell() {
               </a>
               <ConsultationModal
                 trigger={
-                  <Button variant="hero" className="font-semibold text-sm sm:text-base px-3 sm:px-4">
+                  <Button variant="hero" className="font-semibold text-sm px-3 sm:px-4">
                     <span className="sm:hidden">Konsultacja</span>
                     <span className="hidden sm:inline">Bezpłatna konsultacja</span>
                   </Button>
@@ -309,13 +309,15 @@ function AppShell() {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <main id="main-content" tabIndex={-1}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
           <FooterSection />
         </TooltipProvider>
       </QueryClientProvider>

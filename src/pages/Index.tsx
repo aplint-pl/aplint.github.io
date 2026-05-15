@@ -11,7 +11,7 @@ import PreContactCtaSection from "@/components/PreContactCtaSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <article className="min-h-screen bg-background">
       <HeroSection />
       <HighlightsSection />
       <ForWhoSection />
@@ -22,7 +22,7 @@ const Index = () => {
       <TeamSection />
       <PreContactCtaSection />
       <ContactSection />
-    </div>
+    </article>
   );
 };
 

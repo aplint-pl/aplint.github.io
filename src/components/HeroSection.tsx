@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="relative scroll-mt-14 min-h-[calc(85svh-3.5rem)] flex items-center justify-center bg-gradient-bg overflow-visible">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle branded mesh + grid */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background" />
         <div
