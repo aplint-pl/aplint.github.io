@@ -19,8 +19,17 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { CALENDLY_ENABLED } from "@/config/features";
+import { cn } from "@/lib/utils";
 
 export const CALENDLY_URL = "https://calendly.com/kontakt-aplint/30min";
+
+const formFieldClassName =
+  "h-12 min-h-12 px-4 text-base md:h-10 md:min-h-0 md:px-3 md:text-sm";
+const formTextareaClassName =
+  "min-h-[7.5rem] px-4 py-3 text-base md:min-h-[80px] md:px-3 md:py-2 md:text-sm";
+const formLabelClassName = "text-base md:text-sm";
+const contactMethodOptionClassName =
+  "flex min-h-12 cursor-pointer items-center gap-3 rounded-md border p-4 md:min-h-0 md:gap-2 md:p-3";
 
 type ConsultationTriggerProps = {
   children?: React.ReactNode;
@@ -173,12 +182,19 @@ export default function ConsultationModal({
       }}
     >
       <DialogTrigger asChild>{modalTrigger}</DialogTrigger>
-      <DialogContent className="max-w-xl">
-        <DialogHeader>
+      <DialogContent
+        className={cn(
+          "max-w-xl gap-3 p-4 sm:gap-4 sm:p-6",
+          "w-[calc(100%-2rem)] sm:w-full",
+          "max-h-[90dvh] overflow-y-auto overscroll-contain",
+          "max-sm:left-0 max-sm:top-0 max-sm:w-screen max-sm:max-w-none max-sm:h-[100dvh] max-sm:max-h-none max-sm:translate-x-0 max-sm:translate-y-0 max-sm:rounded-none",
+        )}
+      >
+        <DialogHeader className="pr-8 text-left">
           <DialogTitle>Bezpłatna konsultacja</DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-2 text-sm">
+        <div className="space-y-1.5 text-sm sm:space-y-2">
           <a
             href="mailto:kontakt@aplint.pl"
             className="block text-primary hover:text-primary-glow transition-colors"
@@ -206,30 +222,48 @@ export default function ConsultationModal({
         </div>
 
         <form onSubmit={handleRequestContact} className="space-y-4">
-          <p className="font-semibold text-foreground">Zamów kontakt</p>
+          <p className="text-base font-semibold text-foreground">Zamów kontakt</p>
 
-          <div className="space-y-2">
-            <Label>Preferowana forma kontaktu</Label>
+          <div className="space-y-2.5">
+            <Label className={formLabelClassName}>Preferowana forma kontaktu</Label>
             <RadioGroup
               value={contactMethod}
               onValueChange={(value) =>
                 setContactMethod(value as "email" | "phone")
               }
-              className="grid grid-cols-2 gap-3"
+              className="grid grid-cols-1 gap-2.5 min-[400px]:grid-cols-2 min-[400px]:gap-3"
             >
-              <div className="flex items-center space-x-2 rounded-md border p-3">
-                <RadioGroupItem value="email" id="contact-method-email" />
-                <Label htmlFor="contact-method-email">Email</Label>
+              <div className={contactMethodOptionClassName}>
+                <RadioGroupItem
+                  value="email"
+                  id="contact-method-email"
+                  className="h-5 w-5 md:h-4 md:w-4"
+                />
+                <Label
+                  htmlFor="contact-method-email"
+                  className={cn(formLabelClassName, "cursor-pointer font-normal")}
+                >
+                  Email
+                </Label>
               </div>
-              <div className="flex items-center space-x-2 rounded-md border p-3">
-                <RadioGroupItem value="phone" id="contact-method-phone" />
-                <Label htmlFor="contact-method-phone">Telefon</Label>
+              <div className={contactMethodOptionClassName}>
+                <RadioGroupItem
+                  value="phone"
+                  id="contact-method-phone"
+                  className="h-5 w-5 md:h-4 md:w-4"
+                />
+                <Label
+                  htmlFor="contact-method-phone"
+                  className={cn(formLabelClassName, "cursor-pointer font-normal")}
+                >
+                  Telefon
+                </Label>
               </div>
             </RadioGroup>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="contact-value">
+          <div className="space-y-2.5">
+            <Label htmlFor="contact-value" className={formLabelClassName}>
               Twój {contactMethod === "email" ? "email" : "telefon"}
             </Label>
             <Input
@@ -242,32 +276,44 @@ export default function ConsultationModal({
                   ? "np. jan@firma.pl"
                   : "np. +48 600 123 456"
               }
+              className={formFieldClassName}
               required
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="name-or-company">Imię i nazwisko albo firma</Label>
+          <div className="space-y-2.5">
+            <Label htmlFor="name-or-company" className={formLabelClassName}>
+              Imię i nazwisko albo firma
+            </Label>
             <Input
               id="name-or-company"
               value={nameOrCompany}
               onChange={(e) => setNameOrCompany(e.target.value)}
               placeholder="np. Jan Kowalski / Firma XYZ"
+              className={formFieldClassName}
               required
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="details">Dodatkowe informacje (opcjonalnie)</Label>
+          <div className="space-y-2.5">
+            <Label htmlFor="details" className={formLabelClassName}>
+              Dodatkowe informacje (opcjonalnie)
+            </Label>
             <Textarea
               id="details"
               value={details}
               onChange={(e) => setDetails(e.target.value)}
               placeholder="Krótko opisz, czego potrzebujesz."
+              className={formTextareaClassName}
             />
           </div>
 
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            size="lg"
+            className="h-12 w-full text-base md:h-11 md:text-sm"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? "Wysyłanie..." : "Zamów kontakt"}
           </Button>
         </form>

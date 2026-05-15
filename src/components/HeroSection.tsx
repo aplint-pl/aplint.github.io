@@ -43,7 +43,7 @@ const HeroSection = () => {
         </div>
       </div>
       
-      <div className="relative container mx-auto px-6 text-center">
+      <div className="relative container mx-auto text-center">
         {/* Logo */}
         <div className="mb-8 flex justify-center">
           <img

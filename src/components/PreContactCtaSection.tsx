@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function PreContactCtaSection() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
+    <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-muted/20" />
         <div className="absolute -top-16 left-1/4 w-80 h-80 rounded-full bg-primary/15 blur-3xl" />
@@ -14,7 +14,7 @@ export default function PreContactCtaSection() {
       </div>
 
       <div className="container mx-auto relative">
-        <div className="max-w-4xl mx-auto rounded-2xl border border-primary/20 bg-card/70 backdrop-blur-md shadow-elegant p-8 md:p-12 text-center">
+        <div className="max-w-4xl mx-auto rounded-2xl border border-primary/20 bg-card/70 backdrop-blur-md shadow-elegant p-5 sm:p-8 md:p-12 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-5 text-foreground">
             Gotowy, żeby usprawnić swoje procesy?
           </h2>

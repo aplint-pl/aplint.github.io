@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const ContactSection = () => {
   return (
     <section
-      className="scroll-mt-14 py-20 px-6 bg-gradient-to-b from-background to-muted/20"
+      className="scroll-mt-14 py-20 bg-gradient-to-b from-background to-muted/20"
       id="kontakt"
     >
       <div className="container mx-auto">

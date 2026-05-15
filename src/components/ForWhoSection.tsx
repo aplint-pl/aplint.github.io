@@ -47,7 +47,7 @@ export default function ForWhoSection() {
   return (
     <section
       id="dla-kogo"
-      className="relative scroll-mt-14 py-20 px-6 overflow-hidden"
+      className="relative scroll-mt-14 py-20 overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />

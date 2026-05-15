@@ -13,7 +13,7 @@ const PortfolioSection = () => {
   return (
     <section
       id="case-study"
-      className="scroll-mt-14 py-20 px-6 bg-gradient-to-b from-muted/10 to-background"
+      className="scroll-mt-14 py-20 bg-gradient-to-b from-muted/10 to-background"
     >
       <div className="container mx-auto">
         <div className="text-center mb-16">

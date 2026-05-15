@@ -2,7 +2,7 @@ import { Card, CardContent } from "./ui/card";
 
 export default function FooterSection() {
   return (
-    <footer className="py-16 px-6 border-t border-border bg-background/50">
+    <footer className="py-16 border-t border-border bg-background/50">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div className="text-sm text-muted-foreground">

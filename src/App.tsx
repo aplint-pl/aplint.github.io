@@ -96,7 +96,7 @@ function AppShell() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur shadow-sm">
-        <div className="mx-auto px-6 py-3 flex items-center gap-4">
+        <div className="container mx-auto py-3 flex items-center gap-4">
           <div className="flex-none w-24">
             <Link
               to="/"
@@ -194,6 +194,7 @@ function AppShell() {
                     );
                   })}
                   <div className="mt-4 pt-4 border-t border-border flex flex-col gap-3">
+                    <ThemeToggle />
                     <a
                       href="tel:+48725116342"
                       className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground"
@@ -291,13 +292,16 @@ function AppShell() {
               </a>
               <ConsultationModal
                 trigger={
-                  <Button variant="hero" className="font-semibold">
-                    Bezpłatna konsultacja
+                  <Button variant="hero" className="font-semibold text-sm sm:text-base px-3 sm:px-4">
+                    <span className="sm:hidden">Konsultacja</span>
+                    <span className="hidden sm:inline">Bezpłatna konsultacja</span>
                   </Button>
                 }
               />
             </div>
-            <ThemeToggle />
+            <div className="hidden lg:block">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </header>

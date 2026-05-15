@@ -32,7 +32,7 @@ const TeamSection = () => {
   return (
     <section
       id="zespol"
-      className="scroll-mt-14 py-20 px-6 bg-gradient-to-b from-background to-muted/20"
+      className="scroll-mt-14 py-20 bg-gradient-to-b from-background to-muted/20"
     >
       <div className="container mx-auto">
         <div className="text-center mb-16">

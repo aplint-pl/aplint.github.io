@@ -1,6 +1,6 @@
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-background px-6 py-20">
+    <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto max-w-3xl">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
           Polityka prywatności
